@@ -1,0 +1,52 @@
+@use 'layout';
+@use 'fonts';
+
+.nav {
+  position: absolute;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  @media (--medium) {
+    position: static;
+    opacity: 1;
+    transition: none;
+  }
+
+  &.open {
+    opacity: 1;
+  }
+}
+
+.navInner {
+  @include layout.flex(flex-start, space-between, column);
+  padding: 47px var(--page-padding-x);
+  background-color: var(--color-black);
+
+  @media (--medium) {
+    background-color: transparent;
+    @include layout.flex(center, flex-end, row);
+    gap: 43px;
+    padding: 0;
+  }
+
+  a {
+    color: var(--color-white);
+    @include fonts.navigation-small;
+    padding-top: 32px;
+    text-transform: uppercase;
+
+    @media (--medium) {
+      @include fonts.navigation-medium;
+      color: var(--color-black);
+      padding-top: 0;
+    }
+  }
+
+  a:first-child {
+    padding-top: 0;
+  }
+}

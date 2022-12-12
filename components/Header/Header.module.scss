@@ -1,0 +1,15 @@
+@use 'layout';
+
+.header {
+  width: 100%;
+  max-width: var(--page-section-width);
+  margin: 0 auto;
+  @include layout.flex(center, center);
+  position: relative;
+}
+
+.headerInner {
+  padding: 35px var(--page-padding-x);
+  width: 100%;
+  @include layout.flex(center, space-between);
+}
