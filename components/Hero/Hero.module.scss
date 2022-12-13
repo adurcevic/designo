@@ -1,0 +1,126 @@
+@use 'fonts';
+@use 'layout';
+
+@mixin text-style() {
+  color: var(--color-white);
+  text-align: center;
+
+  @media (--large) {
+    text-align: left;
+  }
+}
+
+.hero {
+  width: 100%;
+  padding: 0 var(--page-padding-x) 460px var(--page-padding-x);
+  background-color: var(--color-peach);
+  overflow: hidden;
+
+  @media (--medium) {
+    border-radius: 15px;
+    margin: 0 var(--page-padding-x);
+  }
+
+  @media (--large) {
+    padding-bottom: 150px;
+  }
+
+  @media (--xlarge) {
+    max-width: var(--page-section-width);
+    margin: 0;
+    padding-left: 95px;
+  }
+}
+
+.heroInner {
+  @include layout.flex(center, center, column);
+  padding-top: 80px;
+
+  @media (--medium) {
+    padding-top: 60px;
+  }
+
+  @media (--large) {
+    @include layout.flex(flex-start, space-between, row);
+    padding-top: 145px;
+  }
+}
+
+.content {
+  @include layout.flex(center, center, column);
+  z-index: 3;
+  max-width: 460px;
+  gap: 20px;
+
+  @media (--medium) {
+    max-width: 573px;
+    gap: 24px;
+  }
+
+  @media (--large) {
+    align-items: flex-start;
+    max-width: 540px;
+    gap: 36px;
+  }
+}
+
+.title {
+  @include fonts.small-heading-1;
+  @include text-style;
+
+  @media (--medium) {
+    @include fonts.medium-heading-1;
+  }
+}
+
+.text {
+  @include fonts.small-body;
+  @include text-style;
+
+  @media (--medium) {
+    @include fonts.medium-body;
+    max-width: 445px;
+  }
+}
+
+.imgWrapper {
+  position: relative;
+  width: 100%;
+  @include layout.flex(center, center);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -285px;
+    right: -295px;
+    width: 640px;
+    height: 640px;
+    background-image: url('/assets/bg-pattern-hero-home.svg');
+    background-repeat: no-repeat;
+
+    @media (--medium) {
+      right: -120px;
+    }
+
+    @media (--large) {
+      right: -39px;
+      top: -145px;
+    }
+
+    @media (--xlarge) {
+      right: 0px;
+    }
+  }
+}
+
+.img {
+  position: absolute;
+  top: -60px;
+  max-width: 580px;
+  z-index: 2;
+
+  @media (--large) {
+    top: -170px;
+    max-width: 625px;
+  }
+}

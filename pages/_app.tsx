@@ -1,9 +1,10 @@
 import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
 import { useState } from 'react';
-import Header from '../components/Header/Header';
+import Header from '../components/Layout/Header/Header';
+import Main from '../components/Layout/Main/Main';
 import Navbar from '../components/Navbar/Navbar';
-import HamburgerBtn from '../components/Header/HamburgerBtn';
+import HamburgerBtn from '../components/Layout/Header/HamburgerBtn';
 import Logo from '../components/Logo/Logo';
 import Overlay from '../components/Overlay/Overlay';
 
@@ -16,13 +17,15 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Overlay isVisible={isNavOpen} />
       <Header>
         <Logo />
         <Navbar isOpen={isNavOpen} />
         <HamburgerBtn toggleNav={toggleNav} isOpen={isNavOpen} />
       </Header>
-      <Overlay isVisible={isNavOpen} />
-      <Component {...pageProps} />
+      <Main>
+        <Component {...pageProps} />
+      </Main>
     </>
   );
 }

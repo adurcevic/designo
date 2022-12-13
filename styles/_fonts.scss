@@ -21,11 +21,11 @@
   letter-spacing: 5px;
 }
 
-@mixin body-small {
+@mixin small-body {
   font: 400 15px/25px var(--font-family-primary);
 }
 
-@mixin body-medium {
+@mixin medium-body {
   font: 400 16px/26px var(--font-family-primary);
 }
 

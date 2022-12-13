@@ -1,0 +1,5 @@
+@use 'layout';
+
+.section {
+  @include layout.flex(center, center);
+}

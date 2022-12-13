@@ -1,29 +1,38 @@
 @use 'layout';
 @use 'fonts';
 
+@mixin nav-style($position, $visibility, $transition, $width, $opacity) {
+  position: $position;
+  visibility: $visibility;
+  transition: $transition;
+  width: $width;
+  opacity: $opacity;
+}
+
 .nav {
-  position: absolute;
+  @include nav-style(absolute, hidden, opacity 0.3s ease-in-out, 0, 0);
   top: var(--header-height);
   left: 0;
-  width: 100%;
+  width: 0;
   z-index: 10;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
 
   @media (--medium) {
-    position: static;
-    opacity: 1;
-    transition: none;
+    @include nav-style(static, visible, none, auto, 1);
   }
 
   &.open {
+    width: 100%;
+    visibility: visible;
     opacity: 1;
+
+    .navInner {
+      padding: 47px var(--page-padding-x);
+    }
   }
 }
 
 .navInner {
   @include layout.flex(flex-start, space-between, column);
-  padding: 47px var(--page-padding-x);
   background-color: var(--color-black);
 
   @media (--medium) {
@@ -34,8 +43,8 @@
   }
 
   a {
-    color: var(--color-white);
     @include fonts.navigation-small;
+    color: var(--color-white);
     padding-top: 32px;
     text-transform: uppercase;
 
