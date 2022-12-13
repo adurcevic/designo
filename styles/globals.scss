@@ -1,1 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap');
 
+@custom-media --xsmall (width < 375px);
+@custom-media --small (width >= 375px);
+@custom-media --medium (width >= 768px);
+@custom-media --large (width >= 1024px);
+@custom-media --xlarge (width >= 1280px);
+@custom-media --xxlarge (width >= 1400px);
+
+:root {
+  --font-family-primary: 'Jost', sans-serif;
+
+  /* colors */
+  --color-peach: #e7816b;
+  --color-light-peach: #ffad9b;
+  --color-black: #1d1c1e;
+  --color-dark-grey: #333136;
+  --color-light-grey: #f1f3f5;
+  --color-white: #ffffff;
+
+  --page-padding-x: 24px;
+  --page-section-width: 1111px;
+
+  --header-height: 97px;
+
+  @media (--medium) {
+    --page-padding-x: 39px;
+  }
+
+  @media (--xlarge) {
+    --page-padding-x: 0;
+  }
+}
+
+/******** GLOBAL RESET ********/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

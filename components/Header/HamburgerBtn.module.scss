@@ -1,0 +1,37 @@
+@use 'layout';
+
+.hamburger {
+  position: relative;
+  @include layout.flex(flex-start, space-around, column);
+  width: 24px;
+  height: 20px;
+  background-color: transparent;
+  cursor: pointer;
+
+  div {
+    position: relative;
+    width: 24px;
+    height: 4px;
+    background-color: var(--color-black);
+    transition: all 0.3s linear;
+    transform-origin: 2px;
+  }
+
+  &.isOpen {
+    div:first-child {
+      transform: rotate(45deg);
+    }
+    div:nth-child(2) {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    div:last-child {
+      transform: rotate(-45deg);
+    }
+  }
+
+  @media (--medium) {
+    display: none;
+  }
+}
