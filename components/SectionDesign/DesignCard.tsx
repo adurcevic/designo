@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { NextPage } from 'next';
 import styles from './DesignCard.module.scss';
-import ChevronRight from '../Icons/ChevronRight/ChevronRight';
+import ChevronRight from '../Icons/ChevronRight';
 
 type Props = {
   title: string;

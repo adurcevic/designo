@@ -17,10 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (isNavOpen) document.body.style.overflowY = 'hidden';
-    if (!isNavOpen) document.body.style.overflowY = 'scroll';
+    if (!isNavOpen) document.body.style.overflowY = 'visible';
 
     return () => {
-      document.body.style.overflowY = 'scroll';
+      document.body.style.overflowY = 'visible';
     };
   }, [isNavOpen]);
 

@@ -1,0 +1,40 @@
+@use 'layout';
+
+.section {
+  @include layout.flex(center, center, column);
+  position: relative;
+  gap: 80px;
+
+  @media (--medium) {
+    gap: 32px;
+  }
+
+  @media (--large) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.bgPattern {
+  display: none;
+
+  @media (--xlarge) {
+    display: block;
+    z-index: -1;
+    position: absolute;
+    right: -165px;
+    top: 120px;
+  }
+}
+
+$svgDirection: (
+  '1': 0,
+  '2': -90deg,
+  '3': 90deg,
+);
+
+@each $number, $i in $svgDirection {
+  .section div:nth-child(#{$number}) > div:first-child svg {
+    transform: rotate($i);
+  }
+}
