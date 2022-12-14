@@ -1,6 +1,6 @@
 import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../components/Layout/Header/Header';
 import Main from '../components/Layout/Main/Main';
 import Navbar from '../components/Navbar/Navbar';
@@ -14,6 +14,15 @@ export default function App({ Component, pageProps }: AppProps) {
   const toggleNav = () => {
     setIsNavOpen((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    if (isNavOpen) document.body.style.overflowY = 'hidden';
+    if (!isNavOpen) document.body.style.overflowY = 'scroll';
+
+    return () => {
+      document.body.style.overflowY = 'scroll';
+    };
+  }, [isNavOpen]);
 
   return (
     <>
