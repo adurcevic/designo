@@ -1,6 +1,7 @@
 @mixin btn-style($bg, $color, $bgHover, $colorHover) {
   color: $color;
   background-color: $bg;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     color: $colorHover;
