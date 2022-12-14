@@ -2,6 +2,7 @@ import React from 'react';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import styles from './Navbar.module.scss';
+import NavLink from '../NavLink';
 
 type Props = {
   img?: string;
@@ -16,9 +17,14 @@ const Navbar: NextPage<Props> = ({ isOpen = true }) => {
       className={isOpen ? `${styles.nav} ${styles.open}` : styles.nav}
     >
       <div className={styles.navInner}>
-        <Link className={styles.link} href="/">
+        <NavLink
+          href="/"
+          className={styles.link}
+          activeClassName={styles.active}
+        >
           Our work
-        </Link>
+        </NavLink>
+        {/* <Link className={styles.link} href="/"></Link> */}
         <Link className={styles.link} href="/">
           locations
         </Link>
