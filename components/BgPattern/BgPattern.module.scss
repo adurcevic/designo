@@ -1,0 +1,9 @@
+.bgPattern {
+  display: none;
+
+  @media (--xlarge) {
+    display: block;
+    z-index: -1;
+    position: absolute;
+  }
+}
