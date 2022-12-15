@@ -1,6 +1,6 @@
 @use 'layout';
 
-@mixin shared-style() {
+@mixin section() {
   position: relative;
 
   @media (--large) {
@@ -15,12 +15,12 @@
 }
 
 .section {
-  @include shared-style;
+  @include section;
   margin: 0 var(--page-padding-x) 120px var(--page-padding-x);
 }
 
 .sectionHero {
-  @include shared-style;
+  @include section;
   @include layout.flex(center, center);
   margin-bottom: 120px;
 }

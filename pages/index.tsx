@@ -7,6 +7,7 @@ import DesignSection from '../components/SectionDesign/DesignSection';
 import FeaturesSection from '../components/SectionFeatures/FeaturesSection';
 import FeatureCard from '../components/SectionFeatures/FeatureCard';
 import BgPattern from '../components/BgPattern/BgPattern';
+import Cta from '../components/Cta/Cta';
 
 const designData = [
   {
@@ -79,6 +80,11 @@ export default function Home() {
           rotation="rotate(180)"
           style={{ right: '-155px', top: '135px' }}
         />
+      </Section>
+      <Section>
+        <Cta>
+          <Button text={'Get in touch'} />
+        </Cta>
       </Section>
     </div>
   );
