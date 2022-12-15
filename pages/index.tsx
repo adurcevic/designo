@@ -81,11 +81,9 @@ export default function Home() {
           style={{ right: '-155px', top: '135px' }}
         />
       </Section>
-      <Section>
-        <Cta>
-          <Button text={'Get in touch'} />
-        </Cta>
-      </Section>
+      <Cta>
+        <Button text={'Get in touch'} />
+      </Cta>
     </div>
   );
 }

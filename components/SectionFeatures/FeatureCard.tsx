@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import { NextPage } from 'next';
+import { useRef } from 'react';
+import useIntersection from '../../hooks/useIntersection';
 import styles from './FeatureCard.module.scss';
 
 type Props = {
@@ -9,8 +11,14 @@ type Props = {
 };
 
 const FeatureCard: NextPage<Props> = ({ imgSrc, title, text }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useIntersection(ref);
+
   return (
-    <div className={styles.card}>
+    <div
+      ref={ref}
+      className={isVisible ? `${styles.card} ${styles.visible}` : styles.card}
+    >
       <div className={styles.imgWrapper}>
         <Image className={styles.img} src={imgSrc} alt="" fill />
         <svg xmlns="http://www.w3.org/2000/svg" width="202" height="202">

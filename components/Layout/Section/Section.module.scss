@@ -24,3 +24,11 @@
   @include layout.flex(center, center);
   margin-bottom: 120px;
 }
+
+.hasCta {
+  margin-bottom: 0;
+
+  @media (--large) {
+    margin-bottom: 0;
+  }
+}
