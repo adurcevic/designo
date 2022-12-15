@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import styles from './Section.module.scss';
 
 type Props = {
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
   isHero?: boolean;
 };
 

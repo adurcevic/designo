@@ -6,6 +6,7 @@ import DesignCard from '../components/SectionDesign/DesignCard';
 import DesignSection from '../components/SectionDesign/DesignSection';
 import FeaturesSection from '../components/SectionFeatures/FeaturesSection';
 import FeatureCard from '../components/SectionFeatures/FeatureCard';
+import BgPattern from '../components/BgPattern/BgPattern';
 
 const designData = [
   {
@@ -59,6 +60,7 @@ export default function Home() {
       </Head>
       <Section isHero>
         <Hero button={<Button text={'Learn more'} />} />
+        <BgPattern style={{ bottom: '-250px', left: '-155px' }} />
       </Section>
       <Section>
         <DesignSection>
@@ -73,6 +75,10 @@ export default function Home() {
             <FeatureCard key={i} {...item} />
           ))}
         </FeaturesSection>
+        <BgPattern
+          rotation="rotate(180)"
+          style={{ right: '-155px', top: '135px' }}
+        />
       </Section>
     </div>
   );

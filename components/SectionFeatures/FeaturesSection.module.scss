@@ -15,18 +15,6 @@
   }
 }
 
-.bgPattern {
-  display: none;
-
-  @media (--xlarge) {
-    display: block;
-    z-index: -1;
-    position: absolute;
-    right: -165px;
-    top: 120px;
-  }
-}
-
 $svgDirection: (
   '1': 0,
   '2': -90deg,
