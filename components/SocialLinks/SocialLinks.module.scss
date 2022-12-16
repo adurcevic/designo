@@ -1,0 +1,6 @@
+@use 'layout';
+
+.section {
+  @include layout.flex(center, center);
+  gap: 16px;
+}

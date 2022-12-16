@@ -1,12 +1,16 @@
 import Link from 'next/link';
-import Image from 'next/image';
-import LogoImg from '../../public/logo-dark.png';
+import { NextPage } from 'next';
+import Image, { StaticImageData } from 'next/image';
 import styles from './Logo.module.scss';
 
-const Logo = () => {
+type Props = {
+  logo: StaticImageData;
+};
+
+const Logo: NextPage<Props> = ({ logo }) => {
   return (
     <Link href="/">
-      <Image className={styles.img} src={LogoImg} alt="Designo logo" />
+      <Image className={styles.img} src={logo} alt="Designo logo" />
     </Link>
   );
 };

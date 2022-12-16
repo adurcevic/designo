@@ -8,11 +8,17 @@ type Props = {
 };
 
 const Section: NextPage<Props> = ({ children, isHero, hasCta }) => {
-  return (
-    <section className={isHero ? styles.sectionHero : styles.section}>
-      {children}
-    </section>
-  );
+  let style;
+
+  if (isHero) {
+    style = styles.sectionHero;
+  } else if (hasCta) {
+    style = styles.sectionCta;
+  } else {
+    style = styles.section;
+  }
+
+  return <section className={style}>{children}</section>;
 };
 
 export default Section;

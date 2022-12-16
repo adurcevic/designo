@@ -14,6 +14,7 @@
   --color-peach: #e7816b;
   --color-light-peach: #ffad9b;
   --color-black: #1d1c1e;
+  --color-grey: 151, 151, 151;
   --color-dark-grey: #333136;
   --color-light-grey: #f1f3f5;
   --color-white: #ffffff;
@@ -60,6 +61,7 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 img,
