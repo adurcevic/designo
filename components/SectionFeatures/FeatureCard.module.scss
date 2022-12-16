@@ -1,8 +1,24 @@
 @use 'fonts';
 @use 'layout';
+@use 'animations';
+
+$transitionDelay: (
+  '1': 200ms,
+  '2': 400ms,
+  '3': 600ms,
+);
+
+@each $number, $delay in $transitionDelay {
+  .card:nth-child(#{$number}) {
+    @media (--large) {
+      transition-delay: $delay;
+    }
+  }
+}
 
 .card {
   @include layout.flex(center, center, column);
+  @include animations.fade-right;
   gap: 48px;
 
   @media (--medium) {
@@ -12,6 +28,12 @@
   @media (--large) {
     flex-direction: column;
   }
+}
+
+.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
 }
 
 .imgWrapper {

@@ -4,7 +4,6 @@
   @include layout.flex(center, center, column);
   position: relative;
   gap: 80px;
-
   @media (--medium) {
     gap: 32px;
   }

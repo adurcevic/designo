@@ -8,27 +8,32 @@ type Props = {
   img?: string;
   navlinks?: [];
   isOpen?: boolean;
+  hasFooter?: boolean;
 };
 
-const Navbar: NextPage<Props> = ({ isOpen = true }) => {
+const Navbar: NextPage<Props> = ({ isOpen = false, hasFooter }) => {
   return (
     <nav
-      id="navigation"
-      className={isOpen ? `${styles.nav} ${styles.open}` : styles.nav}
+      id={hasFooter ? undefined : 'navigation'}
+      className={
+        hasFooter
+          ? styles.footerNav
+          : `${styles.nav} ${isOpen ? styles.open : undefined}`
+      }
     >
-      <div className={styles.navInner}>
+      <div className={hasFooter ? styles.footerNavInner : styles.navInner}>
         <NavLink
           href="/"
-          className={styles.link}
-          activeClassName={styles.active}
+          className={hasFooter ? styles.footerLink : styles.link}
+          activeClassName={hasFooter ? undefined : styles.active}
         >
-          Our work
+          Our Company
         </NavLink>
         {/* <Link className={styles.link} href="/"></Link> */}
-        <Link className={styles.link} href="/">
+        <Link className={hasFooter ? styles.footerLink : styles.link} href="/">
           locations
         </Link>
-        <Link className={styles.link} href="/">
+        <Link className={hasFooter ? styles.footerLink : styles.link} href="/">
           contact
         </Link>
       </div>

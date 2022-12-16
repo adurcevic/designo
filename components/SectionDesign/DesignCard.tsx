@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { NextPage } from 'next';
+import { useRef } from 'react';
+import useIntersection from '../../hooks/useIntersection';
 import styles from './DesignCard.module.scss';
 import ChevronRight from '../Icons/ChevronRight';
 
@@ -18,9 +20,15 @@ const DesignCard: NextPage<Props> = ({
   imgTablet,
   imgDesktop,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useIntersection(ref);
+
   return (
     <Link href="/">
-      <div className={styles.card}>
+      <div
+        ref={ref}
+        className={isVisible ? `${styles.card} ${styles.visible}` : styles.card}
+      >
         <div className={styles.overlay}></div>
         <picture>
           <source srcSet={imgMobile} media="(max-width: 768px)" />
