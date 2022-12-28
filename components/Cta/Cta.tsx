@@ -1,20 +1,19 @@
 import { NextPage } from 'next';
 import styles from './Cta.module.scss';
 
-type Props = {
+export type Props = {
   children: JSX.Element;
+  title: string;
+  text: string;
 };
 
-const Cta: NextPage<Props> = ({ children }) => {
+const Cta: NextPage<Props> = ({ children, title, text }) => {
   return (
     <div className={styles.cta}>
       <div className={styles.ctaInner}>
         <div className={styles.content}>
-          <h2 className={styles.title}>Let`s talk about your project</h2>
-          <p className={styles.text}>
-            Ready to take it to the next level? Contact us today and find out
-            how our expertiese can help your business grow.
-          </p>
+          <h2 className={styles.title}>{title}</h2>
+          <p className={styles.text}>{text}</p>
         </div>
         {children}
       </div>
