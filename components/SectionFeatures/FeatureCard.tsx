@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import useIntersection from '../../hooks/useIntersection';
 import styles from './FeatureCard.module.scss';
 
-type Props = {
+export type Props = {
   imgSrc: string;
   title: string;
   text: string;

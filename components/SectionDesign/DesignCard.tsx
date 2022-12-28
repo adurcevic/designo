@@ -5,7 +5,7 @@ import useIntersection from '../../hooks/useIntersection';
 import styles from './DesignCard.module.scss';
 import ChevronRight from '../Icons/ChevronRight';
 
-type Props = {
+export type Props = {
   title: string;
   text: string;
   imgMobile: string;
