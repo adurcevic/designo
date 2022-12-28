@@ -14,3 +14,9 @@
     }
   }
 }
+
+.hasOneRow {
+  @media (--large) {
+    grid-template-rows: 1fr;
+  }
+}

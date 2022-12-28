@@ -33,6 +33,18 @@
   }
 }
 
+.heroDesign {
+  width: 100%;
+  padding: 0 var(--page-padding-x);
+  background-color: var(--color-peach);
+  overflow: hidden;
+
+  @media (--medium) {
+    border-radius: 15px;
+    margin: 0 var(--page-padding-x);
+  }
+}
+
 .heroInner {
   @include layout.flex(center, center, column);
   padding-top: 80px;
@@ -45,6 +57,11 @@
     @include layout.flex(flex-start, space-between, row);
     padding-top: 145px;
   }
+}
+
+.heroInnerDesign {
+  @include layout.flex(center, center, column);
+  padding: 105px 0px;
 }
 
 .content {

@@ -7,10 +7,17 @@ export type Props = {
   button?: JSX.Element;
   title: string;
   subtitle: string;
-  img: string;
+  imgSrc?: string;
+  hasDesign?: boolean;
 };
 
-const Hero: NextPage<Props> = ({ button, title, subtitle, img }) => {
+const Hero: NextPage<Props> = ({
+  button,
+  title,
+  subtitle,
+  imgSrc,
+  hasDesign,
+}) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -22,8 +29,8 @@ const Hero: NextPage<Props> = ({ button, title, subtitle, img }) => {
   }, []);
 
   return (
-    <div className={styles.hero}>
-      <div className={styles.heroInner}>
+    <div className={hasDesign ? styles.heroDesign : styles.hero}>
+      <div className={hasDesign ? styles.heroInnerDesign : styles.heroInner}>
         <div
           className={
             isLoaded ? `${styles.content} ${styles.visible}` : styles.content
@@ -33,18 +40,20 @@ const Hero: NextPage<Props> = ({ button, title, subtitle, img }) => {
           <p className={styles.text}>{subtitle}</p>
           {button}
         </div>
-        <div className={styles.imgWrapper}>
-          <Image
-            className={
-              isLoaded ? `${styles.img} ${styles.visible}` : styles.img
-            }
-            src={img}
-            alt=""
-            width={624}
-            height={913}
-            priority
-          />
-        </div>
+        {imgSrc && (
+          <div className={styles.imgWrapper}>
+            <Image
+              className={
+                isLoaded ? `${styles.img} ${styles.visible}` : styles.img
+              }
+              src={imgSrc}
+              alt=""
+              width={624}
+              height={913}
+              priority
+            />
+          </div>
+        )}
       </div>
     </div>
   );
