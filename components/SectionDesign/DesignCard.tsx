@@ -8,6 +8,7 @@ import ChevronRight from '../Icons/ChevronRight';
 export type Props = {
   title: string;
   text: string;
+  slug: string;
   imgMobile: string;
   imgTablet: string;
   imgDesktop: string;
@@ -16,6 +17,7 @@ export type Props = {
 const DesignCard: NextPage<Props> = ({
   title,
   text,
+  slug,
   imgMobile,
   imgTablet,
   imgDesktop,
@@ -24,7 +26,7 @@ const DesignCard: NextPage<Props> = ({
   const isVisible = useIntersection(ref);
 
   return (
-    <Link href="/">
+    <Link href={`/${slug}`}>
       <div
         ref={ref}
         className={isVisible ? `${styles.card} ${styles.visible}` : styles.card}

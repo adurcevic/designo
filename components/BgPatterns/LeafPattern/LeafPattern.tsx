@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import styles from './BgPattern.module.scss';
+import styles from './LeafPattern.module.scss';
 
 type Props = {
   rotation?: string;
@@ -14,7 +14,7 @@ type Props = {
 const BgPattern: NextPage<Props> = ({ rotation, style }) => {
   return (
     <svg
-      className={styles.bgPattern}
+      className={styles.pattern}
       aria-hidden="true"
       focusable="false"
       width="1006"

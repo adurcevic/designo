@@ -14,3 +14,13 @@
     }
   }
 }
+
+.hasOneRow {
+  @media (--large) {
+    grid-template-rows: 1fr;
+
+    a:first-child {
+      grid-row: 1 / 2;
+    }
+  }
+}

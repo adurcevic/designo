@@ -1,0 +1,14 @@
+.pattern {
+  display: none;
+
+  @media (--medium) {
+    display: block;
+    position: absolute;
+    top: -181px;
+    right: 0;
+  }
+
+  @media (--large) {
+    display: none;
+  }
+}

@@ -1,22 +1,17 @@
 import { NextPage } from 'next';
 import styles from './Section.module.scss';
 
-type Props = {
+export type Props = {
   children: JSX.Element | JSX.Element[];
-  isHero?: boolean;
+  hasHero?: boolean;
   hasCta?: boolean;
 };
 
-const Section: NextPage<Props> = ({ children, isHero, hasCta }) => {
-  let style;
+const Section: NextPage<Props> = ({ children, hasHero, hasCta }) => {
+  let style = styles.section;
 
-  if (isHero) {
-    style = styles.sectionHero;
-  } else if (hasCta) {
-    style = styles.sectionCta;
-  } else {
-    style = styles.section;
-  }
+  if (hasHero) style = styles.sectionHero;
+  if (hasCta) style = styles.sectionCta;
 
   return <section className={style}>{children}</section>;
 };

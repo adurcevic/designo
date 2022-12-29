@@ -1,0 +1,13 @@
+.root {
+  display: grid;
+  gap: 40px;
+
+  @media (--medium) {
+    gap: 32px;
+  }
+
+  @media (--large) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+}

@@ -11,9 +11,8 @@
   }
 }
 
-.hero {
+@mixin hero-style() {
   width: 100%;
-  padding: 0 var(--page-padding-x) 460px var(--page-padding-x);
   background-color: var(--color-peach);
   overflow: hidden;
 
@@ -21,6 +20,11 @@
     border-radius: 15px;
     margin: 0 var(--page-padding-x);
   }
+}
+
+.hero {
+  @include hero-style;
+  padding: 0 var(--page-padding-x) 460px var(--page-padding-x);
 
   @media (--large) {
     padding-bottom: 150px;
@@ -133,4 +137,35 @@
   opacity: 1;
   filter: blur(0);
   transform: translateY(0);
+}
+
+/***************** DESIGN HERO STYLES *******************/
+
+.heroDesign {
+  @include hero-style;
+  position: relative;
+  padding: 0 var(--page-padding-x);
+}
+
+.heroInnerDesign {
+  @include layout.flex(center, center, column);
+  padding: 105px 0px;
+
+  @media (--medium) {
+    padding: 64px 0px;
+  }
+}
+
+.contentDesign {
+  @media (--large) {
+    align-items: center;
+    gap: 24px;
+  }
+}
+
+.textDesign {
+  max-width: 37ch;
+  @media (--large) {
+    text-align: center;
+  }
 }

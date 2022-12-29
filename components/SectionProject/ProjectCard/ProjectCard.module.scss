@@ -1,0 +1,59 @@
+@use 'fonts';
+@use 'layout';
+
+.card {
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover .content {
+    background-color: var(--color-peach);
+  }
+
+  &:hover .title,
+  &:hover .text {
+    color: var(--color-white);
+  }
+
+  @media (--medium) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (--large) {
+    display: block;
+  }
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  @include layout.flex(center, center, column);
+  background-color: var(--color-bg);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.contentInner {
+  @include layout.flex(center, center, column);
+  gap: 16px;
+  padding: 32px 0px;
+  max-width: 268px;
+}
+
+.title {
+  @include fonts.small-heading-3;
+  text-transform: uppercase;
+  color: var(--color-peach);
+  transition: color 0.3s ease-in-out;
+}
+
+.text {
+  @include fonts.medium-body;
+  text-align: center;
+  color: var(--color-dark-grey);
+  transition: color 0.3s ease-in-out;
+}
