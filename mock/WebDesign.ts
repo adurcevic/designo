@@ -8,6 +8,7 @@ export const webHero = {
   title: 'Web Design',
   subtitle:
     'We build websites that serve as powerful marketing tools and bring memorable brand experiences.',
+  pattern: 'web',
 };
 
 export const webProjects = [

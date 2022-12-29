@@ -2,13 +2,20 @@ import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './Hero.module.scss';
+import WebPattern from './HeroDesignPatterns/WebPattern/WebPattern';
+import AppPattern from './HeroDesignPatterns/AppPattern/AppPattern';
+import GraphicPattern from './HeroDesignPatterns/GraphicPattern/GraphicPattern';
+import MobileDesignPattern from './HeroDesignPatterns/MobilePattern/MobileDesignPattern';
+import TabletDesignPattern from './HeroDesignPatterns/TabletPattern/TabletDesignPattern';
 
 export type Props = {
   button?: JSX.Element;
+  children?: JSX.Element | JSX.Element[];
   title: string;
   subtitle: string;
   imgSrc?: string;
   hasDesign?: boolean;
+  pattern?: 'web' | 'app' | 'graphic';
 };
 
 const Hero: NextPage<Props> = ({
@@ -17,6 +24,7 @@ const Hero: NextPage<Props> = ({
   subtitle,
   imgSrc,
   hasDesign,
+  pattern,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -33,11 +41,21 @@ const Hero: NextPage<Props> = ({
       <div className={hasDesign ? styles.heroInnerDesign : styles.heroInner}>
         <div
           className={
-            isLoaded ? `${styles.content} ${styles.visible}` : styles.content
+            isLoaded
+              ? `${styles.content} ${styles.visible} ${
+                  hasDesign && styles.contentDesign
+                }`
+              : styles.content
           }
         >
           <h1 className={styles.title}>{title}</h1>
-          <p className={styles.text}>{subtitle}</p>
+          <p
+            className={
+              hasDesign ? `${styles.text} ${styles.textDesign}` : styles.text
+            }
+          >
+            {subtitle}
+          </p>
           {button}
         </div>
         {imgSrc && (
@@ -55,6 +73,11 @@ const Hero: NextPage<Props> = ({
           </div>
         )}
       </div>
+      {hasDesign && <MobileDesignPattern />}
+      {hasDesign && <TabletDesignPattern />}
+      {pattern === 'web' && <WebPattern />}
+      {pattern === 'app' && <AppPattern />}
+      {pattern === 'graphic' && <GraphicPattern />}
     </div>
   );
 };

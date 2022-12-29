@@ -8,6 +8,7 @@ export const graphicHero = {
   title: 'Graphic Design',
   subtitle:
     'We deliver eye-catching branding materials that are tailored to meet your business objectives.',
+  pattern: 'graphic',
 };
 
 export const graphicProjects = [

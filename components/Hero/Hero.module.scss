@@ -34,6 +34,7 @@
 }
 
 .heroDesign {
+  position: relative;
   width: 100%;
   padding: 0 var(--page-padding-x);
   background-color: var(--color-peach);
@@ -62,6 +63,10 @@
 .heroInnerDesign {
   @include layout.flex(center, center, column);
   padding: 105px 0px;
+
+  @media (--medium) {
+    padding: 64px 0px;
+  }
 }
 
 .content {
@@ -83,6 +88,13 @@
   }
 }
 
+.contentDesign {
+  @media (--large) {
+    align-items: center;
+    gap: 24px;
+  }
+}
+
 .title {
   @include fonts.small-heading-1;
   @include text-style;
@@ -99,6 +111,13 @@
   @media (--medium) {
     @include fonts.medium-body;
     max-width: 445px;
+  }
+}
+
+.textDesign {
+  max-width: 37ch;
+  @media (--large) {
+    text-align: center;
   }
 }
 

@@ -16,7 +16,7 @@ import {
   graphicProjects,
   graphicDesign,
 } from '../mock/GraphicDesign';
-import BgPattern from '../components/BgPattern/BgPattern';
+import LeafPattern from '../components/BgPatterns/LeafPattern/LeafPattern';
 
 type Props = {
   meta: GenericPageMeta.Props;
@@ -38,7 +38,7 @@ export default function WebDesign({
       <GenericPageMeta.default {...meta} />
       <Section hasHero>
         <Hero.default {...hero} hasDesign />
-        <BgPattern style={{ bottom: '-450px', left: '-155px' }} />
+        <LeafPattern style={{ bottom: '-450px', left: '-155px' }} />
       </Section>
       <Section>
         <ProjectGrid>

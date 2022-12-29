@@ -5,7 +5,7 @@ import * as DesignCard from '../components/SectionDesign/DesignCard';
 import DesignSection from '../components/SectionDesign/DesignSection';
 import FeaturesSection from '../components/SectionFeatures/FeaturesSection';
 import * as FeatureCard from '../components/SectionFeatures/FeatureCard';
-import BgPattern from '../components/BgPattern/BgPattern';
+import LeafPattern from '../components/BgPatterns/LeafPattern/LeafPattern';
 import * as Cta from '../components/Cta/Cta';
 import * as GenericPageMeta from '../components/PageMeta/GenericPageMeta';
 import { GetStaticProps } from 'next';
@@ -61,7 +61,7 @@ export default function Home({ meta, hero, design, features, cta }: Props) {
       <GenericPageMeta.default {...meta} />
       <Section hasHero>
         <Hero.default {...hero} button={<Button text={'Learn more'} />} />
-        <BgPattern style={{ bottom: '-250px', left: '-155px' }} />
+        <LeafPattern style={{ bottom: '-250px', left: '-155px' }} />
       </Section>
       <Section>
         <DesignSection>
@@ -76,7 +76,7 @@ export default function Home({ meta, hero, design, features, cta }: Props) {
             <FeatureCard.default key={i} {...item} />
           ))}
         </FeaturesSection>
-        <BgPattern
+        <LeafPattern
           rotation="rotate(180)"
           style={{ right: '-155px', top: '135px' }}
         />

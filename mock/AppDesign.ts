@@ -8,6 +8,7 @@ export const appHero = {
   title: 'App Design',
   subtitle:
     'Our mobile designs bring intuitive digital solutions to your customers right at their fingertips.',
+  pattern: 'app',
 };
 
 export const appProjects = [
