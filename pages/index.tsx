@@ -60,8 +60,11 @@ export default function Home({ meta, hero, design, features, cta }: Props) {
     <div>
       <GenericPageMeta.default {...meta} />
       <Section hasHero>
-        <Hero.default {...hero} button={<Button text={'Learn more'} />} />
-        <LeafPattern style={{ bottom: '-250px', left: '-155px' }} />
+        <Hero.default
+          {...hero}
+          button={<Button type="Link" slug="/about-us" text={'Learn more'} />}
+        />
+        <LeafPattern style={{ top: '320px', left: '-165px' }} />
       </Section>
       <Section>
         <DesignSection>
@@ -78,12 +81,12 @@ export default function Home({ meta, hero, design, features, cta }: Props) {
         </FeaturesSection>
         <LeafPattern
           rotation="rotate(180)"
-          style={{ right: '-155px', top: '135px' }}
+          style={{ right: '-165px', top: '124px' }}
         />
       </Section>
       <Section hasCta>
         <Cta.default {...cta}>
-          <Button text={'Get in touch'} />
+          <Button type="Link" slug="/contact" text={'Get in touch'} />
         </Cta.default>
       </Section>
     </div>

@@ -10,16 +10,19 @@ import BigCircle from '../components/SectionAbout/AboutBgPatterns/BigCircle/BigC
 import ThreeCircles from '../components/BgPatterns/ThreeCircles/ThreeCircles';
 import TwoCircles from '../components/BgPatterns/TwoCircles/TwoCircles';
 import LeafPattern from '../components/BgPatterns/LeafPattern/LeafPattern';
+import LocationsNavWrapper from '../components/LocationsNav/LocationsNavWrapper/LocationsNavWrapper';
+import * as LocationsNavCard from '../components/LocationsNav/LocationsNavCard/LocationsNavCard';
 
 type Props = {
   meta: GenericPageMeta.Props;
   hero: AboutCard.Props;
   weAre: AboutCard.Props;
   weBring: AboutCard.Props;
+  locationsNav: LocationsNavCard.Props[];
   cta: Cta.Props;
 };
 
-const AboutUs = ({ meta, hero, weAre, weBring, cta }: Props) => {
+const AboutUs = ({ meta, hero, weAre, weBring, locationsNav, cta }: Props) => {
   return (
     <>
       <GenericPageMeta.default {...meta} />
@@ -30,7 +33,7 @@ const AboutUs = ({ meta, hero, weAre, weBring, cta }: Props) => {
             <BigCircle />
           </AboutCard.default>
         </AboutWrapper>
-        <LeafPattern style={{ bottom: '-430px', left: '-155px' }} />
+        <LeafPattern style={{ top: '320px', left: '-165px' }} />
       </Section>
       <Section hasHero>
         <AboutWrapper>
@@ -38,6 +41,14 @@ const AboutUs = ({ meta, hero, weAre, weBring, cta }: Props) => {
             <ThreeCircles />
           </AboutCard.default>
         </AboutWrapper>
+      </Section>
+      <Section>
+        <LocationsNavWrapper>
+          {locationsNav.map((item, i) => (
+            <LocationsNavCard.default key={i} {...item} />
+          ))}
+        </LocationsNavWrapper>
+        <LeafPattern style={{ top: '182px', left: '665px' }} />
       </Section>
       <Section hasHero>
         <AboutWrapper>
@@ -49,7 +60,7 @@ const AboutUs = ({ meta, hero, weAre, weBring, cta }: Props) => {
       </Section>
       <Section hasCta>
         <Cta.default {...cta}>
-          <Button text="Get in touch" />
+          <Button type="Link" slug="/contact" text="Get in touch" />
         </Cta.default>
       </Section>
     </>
@@ -84,6 +95,23 @@ export const getStaticProps: GetStaticProps = async () => {
       imgTablet: './assets/about/tablet/image-world-class-talent.jpg',
       imgDesktop: './assets/about/desktop/image-world-class-talent.jpg',
     },
+    locationsNav: [
+      {
+        imgSrc: '/assets/illustration-canada.svg',
+        title: 'Canada',
+        btnText: 'See location',
+      },
+      {
+        imgSrc: '/assets/illustration-australia.svg',
+        title: 'Australia',
+        btnText: 'See location',
+      },
+      {
+        imgSrc: '/assets/illustration-united-kingdom.svg',
+        title: 'United Kingdom',
+        btnText: 'See location',
+      },
+    ],
     weBring: {
       title: 'The real deal',
       mainText:

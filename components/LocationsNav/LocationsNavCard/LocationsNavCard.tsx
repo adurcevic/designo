@@ -1,24 +1,17 @@
+import styles from './LocationsNavCard.module.scss';
 import Image from 'next/image';
+import Button from '../../Button/Button';
 import { NextPage } from 'next';
-import { useRef } from 'react';
-import useIntersection from '../../hooks/useIntersection';
-import styles from './FeatureCard.module.scss';
 
 export type Props = {
   imgSrc: string;
   title: string;
-  text: string;
+  btnText: string;
 };
 
-const FeatureCard: NextPage<Props> = ({ imgSrc, title, text }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isVisible = useIntersection(ref);
-
+const LocationsNavCard: NextPage<Props> = ({ imgSrc, title, btnText }) => {
   return (
-    <div
-      ref={ref}
-      className={isVisible ? `${styles.card} ${styles.visible}` : styles.card}
-    >
+    <div className={styles.card}>
       <div className={styles.imgWrapper}>
         <Image className={styles.img} src={imgSrc} alt="" fill />
         <svg
@@ -47,10 +40,10 @@ const FeatureCard: NextPage<Props> = ({ imgSrc, title, text }) => {
       </div>
       <div className={styles.content}>
         <p className={styles.title}>{title}</p>
-        <p className={styles.text}>{text}</p>
+        <Button type="Link" slug="/locations" dark text={btnText} />
       </div>
     </div>
   );
 };
 
-export default FeatureCard;
+export default LocationsNavCard;

@@ -31,5 +31,10 @@
 
 .btnDark {
   @extend %button;
-  background-color: var();
+  @include btn-style(
+    var(--color-peach),
+    var(--color-white),
+    var(--color-light-peach),
+    var(--color-white)
+  );
 }
