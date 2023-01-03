@@ -1,6 +1,8 @@
+import { useRef } from 'react';
 import styles from './LocationsNavCard.module.scss';
 import Image from 'next/image';
 import Button from '../../Button/Button';
+import useIntersection from '../../../hooks/useIntersection';
 import { NextPage } from 'next';
 
 export type Props = {
@@ -10,8 +12,14 @@ export type Props = {
 };
 
 const LocationsNavCard: NextPage<Props> = ({ imgSrc, title, btnText }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useIntersection(ref);
+
   return (
-    <div className={styles.card}>
+    <div
+      ref={ref}
+      className={`${styles.card} ${isVisible ? styles.visible : ''}`}
+    >
       <div className={styles.imgWrapper}>
         <Image className={styles.img} src={imgSrc} alt="" fill />
         <svg

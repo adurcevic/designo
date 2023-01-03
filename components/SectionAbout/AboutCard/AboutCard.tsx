@@ -1,4 +1,6 @@
 import { NextPage } from 'next';
+import { useRef } from 'react';
+import useIntersection from '../../../hooks/useIntersection';
 import styles from './AboutCard.module.scss';
 
 export type Props = {
@@ -24,6 +26,9 @@ const AboutCard: NextPage<Props> = ({
   isReverse,
   children,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useIntersection(ref);
+
   return (
     <div className={`${styles.card} ${isReverse ? styles.reverseCard : ''}`}>
       <picture>
@@ -40,7 +45,12 @@ const AboutCard: NextPage<Props> = ({
           isReverse ? styles.reverseContent : ''
         }`}
       >
-        <div className={styles.contentInner}>
+        <div
+          ref={ref}
+          className={`${styles.contentInner} ${
+            isVisible ? styles.visible : ''
+          }`}
+        >
           {isHero ? (
             <h1 className={styles.title}>{title}</h1>
           ) : (

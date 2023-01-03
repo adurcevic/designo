@@ -1,5 +1,6 @@
 @use 'fonts';
 @use 'layout';
+@use 'animations';
 
 .card {
   @media (--medium) {
@@ -37,6 +38,7 @@
 
 .contentInner {
   @include layout.flex(center, center, column);
+  @include animations.zoom-in;
   gap: 24px;
   padding: 80px 24px;
 
@@ -49,6 +51,10 @@
     gap: 32px;
     padding: 0 82px 0 95px;
   }
+}
+
+.visible {
+  @include animations.zoom-in-visible;
 }
 
 .title {
