@@ -23,7 +23,7 @@ const Navbar: NextPage<Props> = ({ isOpen = false, hasFooter }) => {
     >
       <div className={hasFooter ? styles.footerNavInner : styles.navInner}>
         <NavLink
-          href="/"
+          href="/about-us"
           className={hasFooter ? styles.footerLink : styles.link}
           activeClassName={hasFooter ? undefined : styles.active}
         >

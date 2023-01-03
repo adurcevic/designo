@@ -1,0 +1,109 @@
+@use 'fonts';
+@use 'layout';
+
+.card {
+  @media (--medium) {
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  @media (--large) {
+    display: grid;
+    grid-template-columns: 57% 43%;
+  }
+}
+
+.img {
+  max-height: 320px;
+  width: 100%;
+  object-fit: cover;
+
+  @media (--large) {
+    max-height: 480px;
+  }
+}
+
+.content {
+  @include layout.flex(center, center);
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-peach);
+
+  @media (--large) {
+    grid-column-start: 1;
+    grid-row-start: 1;
+  }
+}
+
+.contentInner {
+  @include layout.flex(center, center, column);
+  gap: 24px;
+  padding: 80px 24px;
+
+  @media (--medium) {
+    padding: 64px 58px;
+  }
+
+  @media (--large) {
+    align-items: flex-start;
+    gap: 32px;
+    padding: 0 82px 0 95px;
+  }
+}
+
+.title {
+  @include fonts.small-heading-1;
+  color: var(--color-white);
+
+  @media (--medium) {
+    @include fonts.medium-heading-1;
+  }
+}
+
+.text {
+  @include fonts.small-body;
+  color: var(--color-white);
+  text-align: center;
+
+  @media (--medium) {
+    @include fonts.medium-body;
+  }
+
+  @media (--large) {
+    text-align: left;
+  }
+}
+
+/********* CARD STYLE *********/
+.reverseCard {
+  @media (--large) {
+    grid-template-columns: 43% 57%;
+  }
+}
+
+.cardContent {
+  background-color: var(--color-bg);
+}
+
+.reverseContent {
+  @media (--large) {
+    grid-column-start: 2;
+  }
+}
+
+.cardImg {
+  @media (--large) {
+    max-height: 640px;
+  }
+}
+
+.cardTitle {
+  color: var(--color-peach);
+}
+
+.cardText {
+  color: var(--color-dark-grey);
+  @media (--large) {
+    max-width: 46ch;
+  }
+}

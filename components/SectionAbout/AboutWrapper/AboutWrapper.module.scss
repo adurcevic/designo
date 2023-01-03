@@ -1,0 +1,9 @@
+.wrapper {
+  @media (--medium) {
+    margin: 0px 40px;
+  }
+
+  @media (--xlarge) {
+    margin: 0;
+  }
+}
