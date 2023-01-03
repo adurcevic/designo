@@ -1,5 +1,5 @@
-@use 'fonts';
 @use 'layout';
+@use 'fonts';
 @use 'animations';
 
 $transitionDelay: (
@@ -20,14 +20,6 @@ $transitionDelay: (
   @include layout.flex(center, center, column);
   @include animations.fade-right;
   gap: 48px;
-
-  @media (--medium) {
-    flex-direction: row;
-  }
-
-  @media (--large) {
-    flex-direction: column;
-  }
 }
 
 .visible {
@@ -48,35 +40,10 @@ $transitionDelay: (
 .content {
   @include layout.flex(center, center, column);
   gap: 32px;
-
-  @media (--medium) {
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  @media (--large) {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-  }
 }
 
 .title {
   @include fonts.small-heading-3;
+  color: var(--color-dark-grey);
   text-transform: uppercase;
-  color: var(--color-dark-grey);
-}
-
-.text {
-  @include fonts.medium-body;
-  text-align: center;
-  color: var(--color-dark-grey);
-
-  @media (--medium) {
-    text-align: left;
-  }
-
-  @media (--large) {
-    text-align: center;
-  }
 }

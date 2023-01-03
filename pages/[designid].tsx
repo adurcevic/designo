@@ -38,7 +38,7 @@ export default function WebDesign({
       <GenericPageMeta.default {...meta} />
       <Section hasHero>
         <Hero.default {...hero} hasDesign />
-        <LeafPattern style={{ bottom: '-450px', left: '-155px' }} />
+        <LeafPattern style={{ top: '126px', left: '-165px' }} />
       </Section>
       <Section>
         <ProjectGrid>
@@ -56,7 +56,7 @@ export default function WebDesign({
       </Section>
       <Section hasCta>
         <Cta.default {...cta}>
-          <Button text={'Get in touch'} />
+          <Button type="Link" slug="/contact" text={'Get in touch'} />
         </Cta.default>
       </Section>
     </div>

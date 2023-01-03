@@ -134,9 +134,7 @@
 }
 
 .visible {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
+  @include animations.fade-up-visible;
 }
 
 /***************** DESIGN HERO STYLES *******************/

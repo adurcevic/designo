@@ -1,28 +1,28 @@
 @use 'layout';
 
-.section {
+.wrapper {
   @include layout.flex(center, center, column);
-  position: relative;
-  gap: 80px;
+  gap: 48px;
 
   @media (--medium) {
-    gap: 32px;
+    gap: 80px;
   }
 
   @media (--large) {
+    gap: 0px;
     flex-direction: row;
     justify-content: space-between;
   }
 }
 
 $svgDirection: (
-  '1': 0,
-  '2': -90deg,
-  '3': 90deg,
+  '1': 90deg,
+  '2': 0,
+  '3': -90deg,
 );
 
 @each $number, $i in $svgDirection {
-  .section div:nth-child(#{$number}) > div:first-child svg {
+  .wrapper div:nth-child(#{$number}) > div:first-child svg {
     transform: rotate($i);
   }
 }
