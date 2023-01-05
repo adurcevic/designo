@@ -1,9 +1,13 @@
 import styles from './TwoCircles.module.scss';
 
-const TwoCircles = () => {
+type Props = {
+  hasLocations?: boolean;
+};
+
+const TwoCircles = ({ hasLocations }: Props) => {
   return (
     <svg
-      className={styles.pattern}
+      className={`${hasLocations ? styles.locations : styles.pattern}`}
       aria-hidden="true"
       focusable="false"
       width="584"

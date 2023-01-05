@@ -29,9 +29,13 @@ const Navbar: NextPage<Props> = ({ isOpen = false, hasFooter }) => {
         >
           Our Company
         </NavLink>
-        <Link className={hasFooter ? styles.footerLink : styles.link} href="/">
-          locations
-        </Link>
+        <NavLink
+          href="/locations"
+          className={hasFooter ? styles.footerLink : styles.link}
+          activeClassName={hasFooter ? undefined : styles.active}
+        >
+          Locations
+        </NavLink>
         <Link className={hasFooter ? styles.footerLink : styles.link} href="/">
           contact
         </Link>

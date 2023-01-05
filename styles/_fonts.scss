@@ -21,6 +21,10 @@
   letter-spacing: 5px;
 }
 
+@mixin medium-heading-4 {
+  font: 500 40px/48px var(--font-family-primary);
+}
+
 @mixin small-body {
   font: 400 15px/25px var(--font-family-primary);
 }
