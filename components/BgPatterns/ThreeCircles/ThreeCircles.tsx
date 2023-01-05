@@ -2,12 +2,15 @@ import styles from './ThreeCircles.module.scss';
 
 type Props = {
   hidden?: boolean;
+  hasLocations?: boolean;
 };
 
-const ThreeCircles = ({ hidden }: Props) => {
+const ThreeCircles = ({ hidden, hasLocations }: Props) => {
   return (
     <svg
-      className={`${styles.pattern} ${hidden ? styles.hidden : ''}`}
+      className={`${styles.pattern} ${hidden ? styles.hidden : ''} ${
+        hasLocations ? styles.locations : ''
+      }`}
       aria-hidden="true"
       focusable="false"
       xmlns="http://www.w3.org/2000/svg"

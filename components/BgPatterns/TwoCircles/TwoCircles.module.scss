@@ -1,10 +1,18 @@
-.pattern {
+@mixin shared-style($width) {
   display: none;
 
-  @media (--large) {
+  @media ($width) {
     display: block;
     position: absolute;
     bottom: 0;
     left: 0;
   }
+}
+
+.pattern {
+  @include shared-style(--large);
+}
+
+.locations {
+  @include shared-style(--medium);
 }

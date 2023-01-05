@@ -24,14 +24,14 @@ const Cta: NextPage<Props> = ({ children, title, text }) => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="a">
+          <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="6">
             <stop stopColor="#5D0202" stopOpacity="0" offset="0%" />
             <stop stopColor="#5D0202" stopOpacity=".498" offset="100%" />
           </linearGradient>
         </defs>
         <g
           transform="matrix(-1 0 0 1 876 0)"
-          fill="url(#a)"
+          fill="url(#6)"
           fillRule="evenodd"
           opacity=".309"
         >

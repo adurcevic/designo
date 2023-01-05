@@ -1,0 +1,18 @@
+.wrapper {
+  display: grid;
+  gap: 40px;
+  width: 100%;
+
+  @media (--medium) {
+    gap: 120px;
+    margin: 0px 40px;
+  }
+
+  @media (--large) {
+    gap: 32px;
+  }
+
+  @media (--xlarge) {
+    margin: 0;
+  }
+}

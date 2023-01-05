@@ -15,6 +15,12 @@
   }
 }
 
+.locations {
+  @media (--medium) {
+    display: none;
+  }
+}
+
 .hidden {
   @media (--large) {
     display: none;
