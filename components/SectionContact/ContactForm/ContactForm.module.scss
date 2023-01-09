@@ -1,0 +1,91 @@
+@use 'layout';
+@use 'fonts';
+
+.form {
+  @include layout.flex(center, center, column);
+  gap: 25px;
+  z-index: 1;
+  width: 100%;
+
+  & button {
+    margin-top: 15px;
+
+    @media (--medium) {
+      margin-top: 0;
+    }
+  }
+
+  @media (--medium) {
+    align-items: flex-end;
+  }
+}
+
+.row {
+  position: relative;
+  width: 100%;
+
+  &:last-of-type {
+    height: 102px;
+    padding-bottom: 0;
+  }
+
+  &:last-of-type textarea {
+    resize: none;
+    padding-bottom: 0;
+    height: 100%;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-white);
+  }
+}
+
+.filled {
+  &::after {
+    height: 3px;
+  }
+}
+
+.label {
+  position: absolute;
+  visibility: hidden;
+}
+
+.input {
+  @include fonts.small-form;
+  width: 100%;
+  padding-left: 13px;
+  padding-bottom: 11px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-white);
+
+  @media (--medium) {
+    @include fonts.medium-form;
+    padding-left: 24px;
+    padding-bottom: 12px;
+  }
+
+  &::placeholder {
+    text-transform: capitalize;
+    color: var(--color-white);
+    opacity: 0.5;
+  }
+}
+
+.error {
+  @include layout.flex(center, center);
+  @include fonts.error-text;
+  z-index: 1;
+  gap: 9px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--color-white);
+}

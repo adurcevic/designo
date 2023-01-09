@@ -1,6 +1,5 @@
 import React from 'react';
 import { NextPage } from 'next';
-import Link from 'next/link';
 import styles from './Navbar.module.scss';
 import NavLink from '../NavLink';
 
@@ -36,9 +35,13 @@ const Navbar: NextPage<Props> = ({ isOpen = false, hasFooter }) => {
         >
           Locations
         </NavLink>
-        <Link className={hasFooter ? styles.footerLink : styles.link} href="/">
-          contact
-        </Link>
+        <NavLink
+          href="/contact"
+          className={hasFooter ? styles.footerLink : styles.link}
+          activeClassName={hasFooter ? undefined : styles.active}
+        >
+          Contact
+        </NavLink>
       </div>
     </nav>
   );

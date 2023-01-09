@@ -25,7 +25,7 @@ const locations = ({ meta, locations, cta }: Props) => {
       </Section>
       <Section hasCta>
         <Cta.default {...cta}>
-          <Button type="Link" slug="/contact" text="Get in touch" />
+          <Button kind="Link" slug="/contact" text="Get in touch" />
         </Cta.default>
       </Section>
     </>
