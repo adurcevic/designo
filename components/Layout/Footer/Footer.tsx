@@ -5,10 +5,10 @@ import LogoLight from '../../../public/logo-light.png';
 import SocialLinks from '../../SocialLinks/SocialLinks';
 
 type Props = {
-  navigation: JSX.Element;
+  children: JSX.Element;
 };
 
-const Footer: NextPage<Props> = ({ navigation }) => {
+const Footer: NextPage<Props> = ({ children }) => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerInner}>
@@ -16,7 +16,7 @@ const Footer: NextPage<Props> = ({ navigation }) => {
           <div className={styles.logoWrapper}>
             <Logo logo={LogoLight} />
           </div>
-          {navigation}
+          {children}
         </div>
         <div className={styles.info}>
           <address className={styles.address}>

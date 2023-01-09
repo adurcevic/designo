@@ -41,13 +41,15 @@ export default function App({ Component, pageProps }: AppProps) {
       <Overlay isVisible={isNavOpen} />
       <Header>
         <Logo logo={LogoImg} />
-        <Navbar isOpen={isNavOpen} />
+        <Navbar isOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
         <HamburgerBtn toggleNav={toggleNav} isOpen={isNavOpen} />
       </Header>
       <Main>
         <Component {...pageProps} />
       </Main>
-      <Footer navigation={<Navbar hasFooter />}></Footer>
+      <Footer>
+        <Navbar hasFooter />
+      </Footer>
     </>
   );
 }

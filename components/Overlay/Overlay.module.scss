@@ -1,7 +1,7 @@
 .overlay {
   position: absolute;
   top: var(--header-height);
-  height: 0;
+  min-height: calc(100% - var(--header-height));
   width: 100%;
   opacity: 0;
   z-index: -1;
@@ -17,6 +17,5 @@
   &.isVisible {
     opacity: 0.15;
     z-index: 5;
-    min-height: calc(100% - var(--header-height));
   }
 }

@@ -66,6 +66,18 @@
   background-color: transparent;
   color: var(--color-white);
 
+  /******** FIX FOR INPUT AUTOFILL *********/
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  &:-webkit-autofill {
+    -webkit-text-fill-color: var(--color-white) !important;
+  }
+
   @media (--medium) {
     @include fonts.medium-form;
     padding-left: 24px;

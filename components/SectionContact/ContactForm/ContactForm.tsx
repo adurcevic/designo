@@ -9,8 +9,8 @@ const ContactForm = () => {
   return (
     <Formik
       initialValues={{ name: '', email: '', phone: '', message: '' }}
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={(values, { resetForm }) => {
+        resetForm();
       }}
       validationSchema={Yup.object({
         name: Yup.string().required('Can`t be empty'),
