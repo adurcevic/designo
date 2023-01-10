@@ -4,7 +4,6 @@ import * as AboutCard from '../components/SectionAbout/AboutCard/AboutCard';
 import * as GenericPageMeta from '../components/PageMeta/GenericPageMeta';
 import AboutWrapper from '../components/SectionAbout/AboutWrapper/AboutWrapper';
 import * as Cta from '../components/Cta/Cta';
-import Button from '../components/Button/Button';
 import TwoCirclesHero from '../components/SectionAbout/AboutBgPatterns/TwoCirclesHero/TwoCirclesHero';
 import BigCircle from '../components/SectionAbout/AboutBgPatterns/BigCircle/BigCircle';
 import ThreeCircles from '../components/BgPatterns/ThreeCircles/ThreeCircles';
@@ -114,19 +113,6 @@ const query = gql`
               }
             }
           }
-          LocationsNav {
-            title
-            btnText
-            image {
-              data {
-                attributes {
-                  url
-                  width
-                  height
-                }
-              }
-            }
-          }
           Cta {
             title
             text
@@ -184,9 +170,7 @@ const AboutUs = ({ meta, hero, weAre, weBring, locationsNav, cta }: Props) => {
         </AboutWrapper>
       </Section>
       <Section hasCta>
-        <Cta.default {...cta}>
-          <Button kind="Link" slug="/contact" text="Get in touch" />
-        </Cta.default>
+        <Cta.default {...cta} />
       </Section>
     </>
   );

@@ -1,4 +1,3 @@
-import Button from '../components/Button/Button';
 import * as Hero from '../components/Hero/Hero';
 import Section from '../components/Layout/Section/Section';
 import * as DesignCard from '../components/SectionDesign/DesignCard';
@@ -120,9 +119,7 @@ export default function Home({ meta, hero, design, features, cta }: Props) {
         />
       </Section>
       <Section hasCta>
-        <Cta.default {...cta}>
-          <Button kind="Link" slug="/contact" text={'Get in touch'} />
-        </Cta.default>
+        <Cta.default {...cta} />
       </Section>
     </div>
   );

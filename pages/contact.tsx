@@ -6,6 +6,40 @@ import * as GenericPageMeta from '../components/PageMeta/GenericPageMeta';
 import LeafPattern from '../components/BgPatterns/LeafPattern/LeafPattern';
 import * as ContactHero from '../components/SectionContact/ContactHero/ContactHero';
 import ContactForm from '../components/SectionContact/ContactForm/ContactForm';
+import { getGraphqlClient } from '../lib/graphql';
+import { gql } from 'graphql-request';
+
+const query = gql`
+  query getContact {
+    contact {
+      data {
+        attributes {
+          Meta {
+            title
+            description
+          }
+          Hero {
+            title
+            text
+          }
+          LocationsNav {
+            title
+            btnText
+            image {
+              data {
+                attributes {
+                  url
+                  width
+                  height
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 type Props = {
   meta: GenericPageMeta.Props;
@@ -36,34 +70,15 @@ const contact = ({ meta, hero, locationsNav }: Props) => {
 
 export default contact;
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const client = getGraphqlClient();
+  const data = await client.request(query);
+  const { Meta, Hero, LocationsNav } = data.contact.data.attributes;
+
   const props = {
-    meta: {
-      title: 'Contact us',
-      description:
-        'Ready to take it to the next level? Let’s talk about your project or idea and find out how we can help your business grow. If you are looking for unique digital experiences that’s relatable to your users, drop us a line.',
-    },
-    hero: {
-      title: 'Contact us',
-      text: 'Ready to take it to the next level? Let’s talk about your project or idea and find out how we can help your business grow. If you are looking for unique digital experiences that’s relatable to your users, drop us a line.',
-    },
-    locationsNav: [
-      {
-        imgSrc: '/assets/illustration-canada.svg',
-        title: 'Canada',
-        btnText: 'See location',
-      },
-      {
-        imgSrc: '/assets/illustration-australia.svg',
-        title: 'Australia',
-        btnText: 'See location',
-      },
-      {
-        imgSrc: '/assets/illustration-united-kingdom.svg',
-        title: 'United Kingdom',
-        btnText: 'See location',
-      },
-    ],
+    meta: { ...Meta },
+    hero: { ...Hero },
+    locationsNav: LocationsNav,
   };
   return {
     props,
