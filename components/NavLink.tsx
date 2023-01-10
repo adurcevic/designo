@@ -34,7 +34,7 @@ const NavLink: NextPage<Props> = ({
       href={href}
       shallow={shallow}
       onClick={() => onClick && onClick()}
-      className={`${className} ${isActive ? activeClassName : undefined}`}
+      className={`${className} ${isActive ? activeClassName : ''}`}
     >
       {children}
     </Link>

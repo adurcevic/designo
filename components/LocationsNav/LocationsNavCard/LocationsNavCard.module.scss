@@ -33,6 +33,8 @@ $transitionDelay: (
 }
 
 .img {
+  position: absolute;
+  top: 0;
   object-fit: contain;
   z-index: 1;
 }

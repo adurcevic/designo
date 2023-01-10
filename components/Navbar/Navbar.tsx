@@ -22,7 +22,7 @@ const Navbar: NextPage<Props> = ({
       className={
         hasFooter
           ? styles.footerNav
-          : `${styles.nav} ${isOpen ? styles.open : undefined}`
+          : `${styles.nav} ${isOpen ? styles.open : ''}`
       }
     >
       <div className={hasFooter ? styles.footerNavInner : styles.navInner}>
@@ -32,7 +32,7 @@ const Navbar: NextPage<Props> = ({
             onClick={() => isOpen && setIsNavOpen && setIsNavOpen(false)}
             href={item.path}
             className={hasFooter ? styles.footerLink : styles.link}
-            activeClassName={hasFooter ? undefined : styles.active}
+            activeClassName={hasFooter ? '' : styles.active}
           >
             {item.name}
           </NavLink>
