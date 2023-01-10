@@ -7,12 +7,14 @@ import useIntersection from '../../../hooks/useIntersection';
 import SingleCircle from '../../BgPatterns/SingleCircle';
 
 export type Props = {
-  imgSrc: string;
+  image: {
+    data: { attributes: { url: string; width: number; height: number } };
+  };
   title: string;
   btnText: string;
 };
 
-const LocationsNavCard: NextPage<Props> = ({ imgSrc, title, btnText }) => {
+const LocationsNavCard: NextPage<Props> = ({ image, title, btnText }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isVisible = useIntersection(ref);
 
@@ -24,10 +26,10 @@ const LocationsNavCard: NextPage<Props> = ({ imgSrc, title, btnText }) => {
       <div className={styles.imgWrapper}>
         <Image
           className={styles.img}
-          src={imgSrc}
+          src={image.data.attributes.url}
           alt=""
-          width={202}
-          height={202}
+          width={image.data.attributes.width}
+          height={image.data.attributes.height}
         />
         <SingleCircle />
       </div>

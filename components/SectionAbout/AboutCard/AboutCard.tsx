@@ -7,9 +7,9 @@ export type Props = {
   title: string;
   mainText: string;
   secondaryText?: string;
-  imgMobile: string;
-  imgTablet: string;
-  imgDesktop: string;
+  imgMobile: { data: { attributes: { url: string } } };
+  imgTablet: { data: { attributes: { url: string } } };
+  imgDesktop: { data: { attributes: { url: string } } };
   isHero?: boolean;
   isReverse?: boolean;
   children: JSX.Element | JSX.Element[];
@@ -32,12 +32,18 @@ const AboutCard: NextPage<Props> = ({
   return (
     <div className={`${styles.card} ${isReverse ? styles.reverseCard : ''}`}>
       <picture>
-        <source srcSet={imgMobile} media="(max-width: 767px)" />
-        <source srcSet={imgTablet} media="(max-width: 1023px)" />
+        <source
+          srcSet={imgMobile.data.attributes.url}
+          media="(max-width: 767px)"
+        />
+        <source
+          srcSet={imgTablet.data.attributes.url}
+          media="(max-width: 1023px)"
+        />
         <img
           className={`${styles.img} ${!isHero ? styles.cardImg : ''}`}
           alt=""
-          src={imgDesktop}
+          src={imgDesktop.data.attributes.url}
         />
       </picture>
       <div

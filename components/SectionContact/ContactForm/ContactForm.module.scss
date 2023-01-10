@@ -4,7 +4,7 @@
 .form {
   @include layout.flex(center, center, column);
   gap: 25px;
-  z-index: 1;
+  z-index: 5;
   width: 100%;
 
   & button {
@@ -94,7 +94,6 @@
 .error {
   @include layout.flex(center, center);
   @include fonts.error-text;
-  z-index: 1;
   gap: 9px;
   position: absolute;
   top: 0;
