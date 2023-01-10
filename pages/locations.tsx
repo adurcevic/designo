@@ -5,6 +5,38 @@ import * as GenericPageMeta from '../components/PageMeta/GenericPageMeta';
 import Button from '../components/Button/Button';
 import * as LocationsCard from '../components/SectionLocations/LocationsCard/LocationsCard';
 import LocationsWrapper from '../components/SectionLocations/LocationsWrapper/LocationsWrapper';
+import { getGraphqlClient } from '../lib/graphql';
+import { gql } from 'graphql-request';
+
+const query = gql`
+  query getLocation {
+    location {
+      data {
+        attributes {
+          Meta {
+            title
+            description
+          }
+          Locations {
+            country
+            office
+            street
+            city
+            phone
+            email
+            lat
+            lng
+          }
+          Cta {
+            title
+            text
+            btnText
+          }
+        }
+      }
+    }
+  }
+`;
 
 type Props = {
   meta: GenericPageMeta.Props;
@@ -34,54 +66,15 @@ const locations = ({ meta, locations, cta }: Props) => {
 
 export default locations;
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const client = getGraphqlClient();
+  const data = await client.request(query);
+  const { Meta, Locations, Cta } = data.location.data.attributes;
+
   const props = {
-    meta: {
-      title: 'Locations',
-      description: 'Find out about our office locations.',
-    },
-    locations: [
-      {
-        country: 'Canada',
-        office: 'Designo Central Office',
-        street: '3886 Wellington Street',
-        city: 'Toronto, Ontario M9C 3J5',
-        phone: '+1 253-863-8967',
-        email: 'contact@designo.co',
-        position: {
-          lat: 43.64412110445435,
-          lng: -79.39452330748348,
-        },
-      },
-      {
-        country: 'Australia',
-        office: 'Designo AU Office',
-        street: '19 Balonne Street',
-        city: 'New South Wales 2443',
-        phone: '(02) 6720 9092',
-        email: 'contact@designo.au',
-        position: {
-          lat: -28.03308309326044,
-          lng: 148.58589995767144,
-        },
-      },
-      {
-        country: 'United Kingdom',
-        office: 'Designo UK Office',
-        street: '13 Colorado Way',
-        city: 'Rhyd-y-fro SA8 9GA',
-        phone: '078 3115 1400',
-        email: 'contact@designo.uk',
-        position: {
-          lat: 51.72811555746619,
-          lng: -3.8606069738100377,
-        },
-      },
-    ],
-    cta: {
-      title: 'Let`s talk about your project',
-      text: 'Ready to take it to the next level? Contact us today and find out how our expertiese can help your business grow.',
-    },
+    meta: { ...Meta },
+    locations: Locations,
+    cta: { ...Cta },
   };
 
   return {

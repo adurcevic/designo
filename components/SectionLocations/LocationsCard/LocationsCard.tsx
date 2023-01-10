@@ -11,10 +11,8 @@ export type Props = {
   city: string;
   phone: string;
   email: string;
-  position: {
-    lat: number;
-    lng: number;
-  };
+  lat: string;
+  lng: string;
 };
 
 const LocationsCard: NextPage<Props> = ({
@@ -24,9 +22,11 @@ const LocationsCard: NextPage<Props> = ({
   city,
   phone,
   email,
-  position,
+  lat,
+  lng,
 }) => {
   const Map = dynamic(() => import('../Map/Map'), { ssr: false });
+  const position = { lat, lng };
 
   return (
     <div className={styles.card}>

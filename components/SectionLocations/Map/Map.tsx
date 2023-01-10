@@ -18,8 +18,8 @@ L.Icon.Default.mergeOptions({
 });
 
 type Props = {
-  lat: number;
-  lng: number;
+  lat: string;
+  lng: string;
 };
 
 const Map: NextPage<Props> = ({ lat, lng }) => {
@@ -27,7 +27,7 @@ const Map: NextPage<Props> = ({ lat, lng }) => {
     <>
       <MapContainer
         className={styles.map}
-        center={[lat, lng]}
+        center={[+lat, +lng]}
         zoom={13}
         scrollWheelZoom={false}
       >
@@ -35,7 +35,7 @@ const Map: NextPage<Props> = ({ lat, lng }) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
-        <Marker position={[lat, lng]}></Marker>
+        <Marker position={[+lat, +lng]}></Marker>
       </MapContainer>
     </>
   );
