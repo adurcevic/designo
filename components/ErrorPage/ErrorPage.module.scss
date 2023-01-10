@@ -1,0 +1,23 @@
+@use 'layout';
+@use 'fonts';
+
+.root {
+  @include layout.flex(center, center);
+  height: calc(100vh - var(--header-height));
+}
+
+.positioner {
+  @include layout.flex(center, center, column);
+  gap: 12px;
+}
+
+.title {
+  @include fonts.medium-heading-1;
+  font-weight: 700;
+}
+
+.text {
+  @include fonts.small-heading-3;
+  font-weight: 400;
+  letter-spacing: 0;
+}
