@@ -34,7 +34,7 @@ export default function WebDesign({
   cta,
 }: Props) {
   return (
-    <div>
+    <>
       <GenericPageMeta.default {...meta} />
       <Section hasHero>
         <Hero.default {...hero} hasDesign />
@@ -56,10 +56,10 @@ export default function WebDesign({
       </Section>
       <Section hasCta>
         <Cta.default {...cta}>
-          <Button type="Link" slug="/contact" text={'Get in touch'} />
+          <Button kind="Link" slug="/contact" text={'Get in touch'} />
         </Cta.default>
       </Section>
-    </div>
+    </>
   );
 }
 

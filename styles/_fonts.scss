@@ -42,3 +42,16 @@
   font: 400 14px/14px var(--font-family-primary);
   letter-spacing: 2px;
 }
+
+@mixin small-form {
+  font: 500 15px/25px var(--font-family-primary);
+}
+
+@mixin medium-form {
+  font: 500 15px/26px var(--font-family-primary);
+}
+
+@mixin error-text {
+  font: 400 12px/26px var(--font-family-primary);
+  font-style: italic;
+}

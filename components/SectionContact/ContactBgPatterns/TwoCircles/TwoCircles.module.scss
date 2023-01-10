@@ -1,0 +1,9 @@
+.pattern {
+  position: absolute;
+  top: 0;
+  left: -92px;
+
+  @media (--medium) {
+    display: none;
+  }
+}

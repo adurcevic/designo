@@ -62,7 +62,7 @@ export default function Home({ meta, hero, design, features, cta }: Props) {
       <Section hasHero>
         <Hero.default
           {...hero}
-          button={<Button type="Link" slug="/about-us" text={'Learn more'} />}
+          button={<Button kind="Link" slug="/about-us" text={'Learn more'} />}
         />
         <LeafPattern style={{ top: '320px', left: '-165px' }} />
       </Section>
@@ -86,7 +86,7 @@ export default function Home({ meta, hero, design, features, cta }: Props) {
       </Section>
       <Section hasCta>
         <Cta.default {...cta}>
-          <Button type="Link" slug="/contact" text={'Get in touch'} />
+          <Button kind="Link" slug="/contact" text={'Get in touch'} />
         </Cta.default>
       </Section>
     </div>

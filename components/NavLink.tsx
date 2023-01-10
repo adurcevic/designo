@@ -7,6 +7,7 @@ type Props = LinkProps & {
   activeClassName?: string;
   className?: string;
   exact?: boolean;
+  onClick?: () => void;
 };
 
 const NavLink: NextPage<Props> = ({
@@ -15,6 +16,7 @@ const NavLink: NextPage<Props> = ({
   activeClassName,
   className,
   shallow,
+  onClick,
   exact = false,
 }) => {
   const router = useRouter();
@@ -31,7 +33,8 @@ const NavLink: NextPage<Props> = ({
     <Link
       href={href}
       shallow={shallow}
-      className={`${className} ${isActive ? activeClassName : undefined}`}
+      onClick={() => onClick && onClick()}
+      className={`${className} ${isActive ? activeClassName : ''}`}
     >
       {children}
     </Link>

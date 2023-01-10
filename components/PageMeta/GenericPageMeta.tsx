@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 
 export type Props = {
   title: string;
-  description: string;
+  description?: string;
 };
 
 const GenericPageMeta: NextPage<Props> = ({ title, description }) => {

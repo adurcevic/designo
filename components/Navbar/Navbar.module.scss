@@ -32,23 +32,32 @@
 }
 
 .nav {
-  @include nav-style(absolute, hidden, opacity 0.3s ease-in-out, 0, 0);
+  @include nav-style(absolute, hidden, opacity 0.3s ease-in-out, 100%, 0);
   top: var(--header-height);
   left: 0;
-  width: 0;
-  z-index: 10;
+  z-index: -1;
 
   @media (--medium) {
     @include nav-style(static, visible, none, auto, 1);
+    z-index: 10;
   }
 
   &.open {
     width: 100%;
     visibility: visible;
     opacity: 1;
+    z-index: 10;
+
+    @media (--medium) {
+      width: auto;
+    }
 
     .navInner {
       padding: 47px var(--page-padding-x);
+
+      @media (--medium) {
+        padding: 0px;
+      }
     }
   }
 }
@@ -68,7 +77,7 @@
 .link {
   @include fonts.navigation-small;
   color: var(--color-white);
-  padding-top: 32px;
+  margin-top: 32px;
   text-transform: uppercase;
   transition: color 0.2s ease-in-out;
 
@@ -81,14 +90,14 @@
   }
 
   &:first-child {
-    padding-top: 0;
+    margin-top: 0;
   }
 
   @media (--medium) {
     @include link-style;
     position: relative;
     color: var(--color-black);
-    padding-top: 0;
+    margin-top: 0;
     transition: none;
   }
 }

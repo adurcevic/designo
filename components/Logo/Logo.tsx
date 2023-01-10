@@ -5,11 +5,16 @@ import styles from './Logo.module.scss';
 
 type Props = {
   logo: StaticImageData;
+  isOpen?: boolean;
+  setIsNavOpen?: (arg0: boolean) => void;
 };
 
-const Logo: NextPage<Props> = ({ logo }) => {
+const Logo: NextPage<Props> = ({ logo, isOpen, setIsNavOpen }) => {
   return (
-    <Link href="/">
+    <Link
+      onClick={() => isOpen && setIsNavOpen && setIsNavOpen(false)}
+      href="/"
+    >
       <Image className={styles.img} src={logo} alt="Designo logo" />
     </Link>
   );
