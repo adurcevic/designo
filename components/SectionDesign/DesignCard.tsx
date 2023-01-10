@@ -9,9 +9,9 @@ export type Props = {
   title: string;
   text: string;
   slug: string;
-  imgMobile: string;
-  imgTablet: string;
-  imgDesktop: string;
+  imgMobile: { data: { attributes: { url: string } } };
+  imgTablet: { data: { attributes: { url: string } } };
+  imgDesktop: { data: { attributes: { url: string } } };
 };
 
 const DesignCard: NextPage<Props> = ({
@@ -33,9 +33,19 @@ const DesignCard: NextPage<Props> = ({
       >
         <div className={styles.overlay}></div>
         <picture>
-          <source srcSet={imgMobile} media="(max-width: 768px)" />
-          <source srcSet={imgTablet} media="(max-width: 1024px)" />
-          <img className={styles.img} src={imgDesktop} alt=""></img>
+          <source
+            srcSet={imgMobile.data.attributes.url}
+            media="(max-width: 768px)"
+          />
+          <source
+            srcSet={imgTablet.data.attributes.url}
+            media="(max-width: 1024px)"
+          />
+          <img
+            className={styles.img}
+            src={imgDesktop.data.attributes.url}
+            alt=""
+          ></img>
         </picture>
         <div className={styles.content}>
           <p className={styles.title}>{title}</p>

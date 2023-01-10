@@ -7,27 +7,29 @@ import AppPattern from './HeroDesignPatterns/AppPattern/AppPattern';
 import GraphicPattern from './HeroDesignPatterns/GraphicPattern/GraphicPattern';
 import MobileDesignPattern from './HeroDesignPatterns/MobilePattern/MobileDesignPattern';
 import TabletDesignPattern from './HeroDesignPatterns/TabletPattern/TabletDesignPattern';
+import Button from '../Button/Button';
 
 export type Props = {
-  button?: JSX.Element;
+  btnText?: string;
   children?: JSX.Element | JSX.Element[];
   title: string;
-  subtitle: string;
-  imgSrc?: string;
+  text: string;
+  image?: {
+    data: { attributes: { url: string; width: number; height: number } };
+  };
   hasDesign?: boolean;
   pattern?: 'web' | 'app' | 'graphic';
 };
 
 const Hero: NextPage<Props> = ({
-  button,
+  btnText,
   title,
-  subtitle,
-  imgSrc,
+  text,
+  image,
   hasDesign,
   pattern,
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
     setIsLoaded(true);
 
@@ -54,20 +56,20 @@ const Hero: NextPage<Props> = ({
               hasDesign ? `${styles.text} ${styles.textDesign}` : styles.text
             }
           >
-            {subtitle}
+            {text}
           </p>
-          {button}
+          {btnText && <Button kind="Link" slug="/about-us" text={btnText} />}
         </div>
-        {imgSrc && (
+        {image && (
           <div className={styles.imgWrapper}>
             <Image
               className={
                 isLoaded ? `${styles.img} ${styles.visible}` : styles.img
               }
-              src={imgSrc}
+              src={image.data.attributes.url}
               alt=""
-              width={624}
-              height={913}
+              width={image.data.attributes.width}
+              height={image.data.attributes.height}
               priority
             />
           </div>

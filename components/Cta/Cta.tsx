@@ -1,13 +1,14 @@
 import { NextPage } from 'next';
 import styles from './Cta.module.scss';
+import Button from '../Button/Button';
 
 export type Props = {
-  children: JSX.Element;
   title: string;
   text: string;
+  btnText: string;
 };
 
-const Cta: NextPage<Props> = ({ children, title, text }) => {
+const Cta: NextPage<Props> = ({ title, text, btnText }) => {
   return (
     <div className={styles.cta}>
       <div className={styles.ctaInner}>
@@ -15,7 +16,7 @@ const Cta: NextPage<Props> = ({ children, title, text }) => {
           <h2 className={styles.title}>{title}</h2>
           <p className={styles.text}>{text}</p>
         </div>
-        {children}
+        <Button kind="Link" slug="/contact" text={btnText} />
       </div>
       <svg
         className={styles.bgPattern}
