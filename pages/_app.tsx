@@ -40,7 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Overlay isVisible={isNavOpen} />
       <Header>
-        <Logo logo={LogoImg} />
+        <Logo isOpen={isNavOpen} setIsNavOpen={setIsNavOpen} logo={LogoImg} />
         <Navbar isOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
         <HamburgerBtn toggleNav={toggleNav} isOpen={isNavOpen} />
       </Header>

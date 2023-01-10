@@ -1,7 +1,9 @@
+import { useRef } from 'react';
 import styles from './ContactHero.module.scss';
 import TwoCircles from '../ContactBgPatterns/TwoCircles/TwoCircles';
 import BigCircle from '../ContactBgPatterns/BigCircle/BigCircle';
 import { NextPage } from 'next';
+import useIntersection from '../../../hooks/useIntersection';
 
 export type Hero = {
   title: string;
@@ -13,9 +15,12 @@ type Props = Hero & {
 };
 
 const ContactHero: NextPage<Props> = ({ title, text, children }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useIntersection(ref);
+
   return (
-    <div className={styles.hero}>
-      <div className={styles.heroInner}>
+    <div ref={ref} className={styles.hero}>
+      <div className={`${styles.heroInner} ${isVisible ? styles.visible : ''}`}>
         <div className={styles.content}>
           <h1 className={styles.title}>{title}</h1>
           <p className={styles.text}>{text}</p>

@@ -1,5 +1,6 @@
 @use 'layout';
 @use 'fonts';
+@use 'animations';
 
 .hero {
   position: relative;
@@ -15,6 +16,7 @@
 
 .heroInner {
   @include layout.flex(center, center, column);
+  @include animations.fade-up;
   gap: 48px;
   padding: 72px 24px;
 
@@ -28,6 +30,10 @@
     gap: 0;
     padding: 55px 95px;
   }
+}
+
+.visible {
+  @include animations.fade-up-visible;
 }
 
 .content {

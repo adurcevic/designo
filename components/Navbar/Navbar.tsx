@@ -1,4 +1,3 @@
-import React from 'react';
 import { NextPage } from 'next';
 import styles from './Navbar.module.scss';
 import NavLink from '../NavLink';
@@ -30,7 +29,7 @@ const Navbar: NextPage<Props> = ({
         {navData.map((item, i) => (
           <NavLink
             key={i}
-            onClick={() => setIsNavOpen && setIsNavOpen(false)}
+            onClick={() => isOpen && setIsNavOpen && setIsNavOpen(false)}
             href={item.path}
             className={hasFooter ? styles.footerLink : styles.link}
             activeClassName={hasFooter ? undefined : styles.active}
