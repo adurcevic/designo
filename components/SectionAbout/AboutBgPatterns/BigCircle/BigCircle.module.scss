@@ -1,0 +1,15 @@
+.pattern {
+  display: none;
+
+  @media (--medium) {
+    display: block;
+    position: absolute;
+    top: -440px;
+    left: -115px;
+  }
+
+  @media (--large) {
+    top: -160px;
+    left: 0;
+  }
+}

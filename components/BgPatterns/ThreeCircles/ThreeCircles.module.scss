@@ -1,0 +1,28 @@
+.pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  @media (--medium) {
+    left: 94px;
+    top: -212px;
+  }
+
+  @media (--large) {
+    left: -150px;
+    top: auto;
+    bottom: 0;
+  }
+}
+
+.locations {
+  @media (--medium) {
+    display: none;
+  }
+}
+
+.hidden {
+  @media (--large) {
+    display: none;
+  }
+}

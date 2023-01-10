@@ -1,0 +1,44 @@
+@mixin btn-style($bg, $color, $bgHover, $colorHover) {
+  color: $color;
+  background-color: $bg;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: $colorHover;
+    background-color: $bgHover;
+  }
+}
+
+%button {
+  z-index: 1;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 17px 26px;
+  cursor: pointer;
+  border-radius: 8px;
+  letter-spacing: 1px;
+}
+
+.btn {
+  @extend %button;
+  @include btn-style(
+    var(--color-white),
+    var(--color-black),
+    var(--color-light-peach),
+    var(--color-white)
+  );
+}
+
+.btnDark {
+  @extend %button;
+  @include btn-style(
+    var(--color-peach),
+    var(--color-white),
+    var(--color-light-peach),
+    var(--color-white)
+  );
+}
+
+.submit {
+  padding: 17px 48px;
+}

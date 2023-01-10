@@ -1,0 +1,51 @@
+@use 'layout';
+@use 'fonts';
+@use 'animations';
+
+$transitionDelay: (
+  '1': 200ms,
+  '2': 400ms,
+  '3': 600ms,
+);
+
+@each $number, $delay in $transitionDelay {
+  .card:nth-child(#{$number}) {
+    @media (--large) {
+      transition-delay: $delay;
+    }
+  }
+}
+
+.card {
+  @include layout.flex(center, center, column);
+  @include animations.fade-right;
+  gap: 48px;
+}
+
+.visible {
+  @include animations.fade-right-visible;
+}
+
+.imgWrapper {
+  position: relative;
+  min-width: 202px;
+  height: 202px;
+}
+
+.img {
+  position: absolute;
+  top: 0;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.content {
+  @include layout.flex(center, center, column);
+  gap: 32px;
+}
+
+.title {
+  @include fonts.small-heading-3;
+  color: var(--color-dark-grey);
+  text-transform: uppercase;
+}

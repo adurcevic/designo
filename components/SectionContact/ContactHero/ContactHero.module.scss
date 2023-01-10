@@ -1,0 +1,79 @@
+@use 'layout';
+@use 'fonts';
+@use 'animations';
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--color-peach);
+
+  @media (--medium) {
+    border-radius: 15px;
+    margin: 0 var(--page-padding-x);
+  }
+}
+
+.heroInner {
+  @include layout.flex(center, center, column);
+  @include animations.fade-up;
+  gap: 48px;
+  padding: 72px 24px;
+
+  @media (--medium) {
+    gap: 40px;
+    padding: 71px 58px;
+  }
+
+  @media (--xlarge) {
+    @include layout.flex(center, space-between, row);
+    gap: 0;
+    padding: 55px 95px;
+  }
+}
+
+.visible {
+  @include animations.fade-up-visible;
+}
+
+.content {
+  @include layout.flex(center, center, column);
+  z-index: 1;
+  width: 100%;
+  gap: 24px;
+
+  @media (--medium) {
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  @media (--large) {
+    padding-right: 95px;
+  }
+}
+
+.title {
+  @include fonts.small-heading-1;
+  text-transform: capitalize;
+  color: var(--color-white);
+
+  @media (--medium) {
+    @include fonts.medium-heading-1;
+  }
+}
+
+.text {
+  @include fonts.small-body;
+  text-align: center;
+  color: var(--color-white);
+
+  @media (--medium) {
+    max-width: 58ch;
+    @include fonts.medium-body;
+    text-align: left;
+  }
+
+  @media (--xlarge) {
+    min-width: 47ch;
+  }
+}

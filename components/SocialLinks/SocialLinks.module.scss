@@ -1,0 +1,14 @@
+@use 'layout';
+
+.section {
+  @include layout.flex(center, center);
+  gap: 16px;
+
+  & svg {
+    transition: filter 0.2s ease-out;
+
+    &:hover {
+      filter: brightness(1.3);
+    }
+  }
+}

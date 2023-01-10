@@ -1,0 +1,54 @@
+@use 'layout';
+
+@mixin section($margin) {
+  position: relative;
+
+  @media (--large) {
+    margin-bottom: $margin;
+  }
+
+  @media (--xlarge) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--page-section-width);
+  }
+}
+
+.section {
+  @include section(160px);
+  margin: 0 var(--page-padding-x) 120px var(--page-padding-x);
+}
+
+.sectionHero {
+  @include section(160px);
+  @include layout.flex(center, center);
+  margin-bottom: 120px;
+}
+
+.sectionCta {
+  @include section(0px);
+  margin: 0 var(--page-padding-x);
+
+  &:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: calc(var(--page-padding-x) * -1);
+    width: 100vw;
+    background-color: var(--color-black);
+    height: calc(100% / 2);
+
+    @media (--medium) {
+      height: 86px;
+    }
+
+    @media (--large) {
+      height: 72px;
+    }
+
+    @media (--xlarge) {
+      left: calc((100vw - var(--page-section-width)) / 2 * -1);
+    }
+  }
+}

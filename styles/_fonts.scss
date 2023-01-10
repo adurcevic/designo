@@ -1,0 +1,57 @@
+@mixin small-heading-1 {
+  font: 500 32px/36px var(--font-family-primary);
+}
+
+@mixin medium-heading-1 {
+  font: 500 48px/48px var(--font-family-primary);
+}
+
+@mixin small-heading-2 {
+  font: 500 28px/36px var(--font-family-primary);
+  letter-spacing: 1.4px;
+}
+
+@mixin medium-heading-2 {
+  font: 500 40px/48px var(--font-family-primary);
+  letter-spacing: 2px;
+}
+
+@mixin small-heading-3 {
+  font: 500 20px/26px var(--font-family-primary);
+  letter-spacing: 5px;
+}
+
+@mixin medium-heading-4 {
+  font: 500 40px/48px var(--font-family-primary);
+}
+
+@mixin small-body {
+  font: 400 15px/25px var(--font-family-primary);
+}
+
+@mixin medium-body {
+  font: 400 16px/26px var(--font-family-primary);
+}
+
+@mixin navigation-small {
+  font: 400 24px/25px var(--font-family-primary);
+  letter-spacing: 2px;
+}
+
+@mixin navigation-medium {
+  font: 400 14px/14px var(--font-family-primary);
+  letter-spacing: 2px;
+}
+
+@mixin small-form {
+  font: 500 15px/25px var(--font-family-primary);
+}
+
+@mixin medium-form {
+  font: 500 15px/26px var(--font-family-primary);
+}
+
+@mixin error-text {
+  font: 400 12px/26px var(--font-family-primary);
+  font-style: italic;
+}

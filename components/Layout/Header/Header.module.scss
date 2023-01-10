@@ -1,0 +1,23 @@
+@use 'layout';
+
+.header {
+  width: 100%;
+  margin: 0 auto;
+  @include layout.flex(center, center);
+  position: relative;
+
+  @media (--xlarge) {
+    max-width: var(--page-section-width);
+  }
+}
+
+.headerInner {
+  padding: 35px var(--page-padding-x);
+  width: 100%;
+  @include layout.flex(center, space-between);
+
+  @media (--medium) {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}

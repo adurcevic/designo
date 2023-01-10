@@ -1,0 +1,21 @@
+.overlay {
+  position: absolute;
+  top: var(--header-height);
+  min-height: calc(100% - var(--header-height));
+  width: 100%;
+  opacity: 0;
+  z-index: -1;
+  background-color: var(--color-black);
+  backdrop-filter: blur(2px);
+  transition: all 0.3s ease-in-out;
+  height: 0;
+
+  @media (--medium) {
+    display: none;
+  }
+
+  &.isVisible {
+    opacity: 0.15;
+    z-index: 5;
+  }
+}
