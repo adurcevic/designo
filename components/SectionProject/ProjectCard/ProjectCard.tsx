@@ -3,20 +3,22 @@ import styles from './ProjectCard.module.scss';
 import { NextPage } from 'next';
 
 export type Props = {
-  imgSrc: string;
+  image: {
+    data: { attributes: { url: string; width: number; height: number } };
+  };
   title: string;
   text: string;
 };
 
-const ProjectCard: NextPage<Props> = ({ imgSrc, title, text }) => {
+const ProjectCard: NextPage<Props> = ({ image, title, text }) => {
   return (
     <div className={styles.card}>
       <Image
         className={styles.img}
-        src={imgSrc}
+        src={image.data.attributes.url}
         alt=""
-        height={700}
-        width={640}
+        height={image.data.attributes.height}
+        width={image.data.attributes.width}
       />
       <div className={styles.content}>
         <div className={styles.contentInner}>
