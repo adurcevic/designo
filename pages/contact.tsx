@@ -8,6 +8,7 @@ import * as ContactHero from '../components/SectionContact/ContactHero/ContactHe
 import ContactForm from '../components/SectionContact/ContactForm/ContactForm';
 import { getGraphqlClient } from '../lib/graphql';
 import { gql } from 'graphql-request';
+import { GetContactQuery } from '../generated/graphql';
 
 const query = gql`
   query getContact {
@@ -72,13 +73,13 @@ export default contact;
 
 export const getStaticProps: GetStaticProps = async () => {
   const client = getGraphqlClient();
-  const data = await client.request(query);
-  const { Meta, Hero, LocationsNav } = data.contact.data.attributes;
+  const data: GetContactQuery = await client.request(query);
+  const page = data?.contact?.data?.attributes;
 
   const props = {
-    meta: { ...Meta },
-    hero: { ...Hero },
-    locationsNav: LocationsNav,
+    meta: page?.Meta,
+    hero: page?.Hero,
+    locationsNav: page?.LocationsNav,
   };
   return {
     props,

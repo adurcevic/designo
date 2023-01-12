@@ -7,6 +7,7 @@ import * as LocationsCard from '../components/SectionLocations/LocationsCard/Loc
 import LocationsWrapper from '../components/SectionLocations/LocationsWrapper/LocationsWrapper';
 import { getGraphqlClient } from '../lib/graphql';
 import { gql } from 'graphql-request';
+import { GetLocationQuery } from '../generated/graphql';
 
 const query = gql`
   query getLocation {
@@ -68,13 +69,13 @@ export default locations;
 
 export const getStaticProps: GetStaticProps = async () => {
   const client = getGraphqlClient();
-  const data = await client.request(query);
-  const { Meta, Locations, Cta } = data.location.data.attributes;
+  const data: GetLocationQuery = await client.request(query);
+  const page = data?.location?.data?.attributes;
 
   const props = {
-    meta: { ...Meta },
-    locations: Locations,
-    cta: { ...Cta },
+    meta: page?.Meta,
+    locations: page?.Locations,
+    cta: page?.Cta,
   };
 
   return {

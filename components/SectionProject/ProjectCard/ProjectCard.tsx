@@ -1,25 +1,23 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Image from 'next/image';
 import styles from './ProjectCard.module.scss';
 import { NextPage } from 'next';
+import { ComponentPageProjectCard } from '../../../generated/graphql';
 
-export type Props = {
-  image: {
-    data: { attributes: { url: string; width: number; height: number } };
-  };
-  title: string;
-  text: string;
-};
+export type Props = ComponentPageProjectCard;
 
 const ProjectCard: NextPage<Props> = ({ image, title, text }) => {
   return (
     <div className={styles.card}>
-      <Image
-        className={styles.img}
-        src={image.data.attributes.url}
-        alt=""
-        height={image.data.attributes.height}
-        width={image.data.attributes.width}
-      />
+      {Image && (
+        <Image
+          className={styles.img}
+          src={image.data!.attributes!.url}
+          alt=""
+          height={Number(image.data!.attributes!.height)}
+          width={Number(image.data!.attributes!.width)}
+        />
+      )}
       <div className={styles.content}>
         <div className={styles.contentInner}>
           <p className={styles.title}>{title}</p>

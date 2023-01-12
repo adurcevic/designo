@@ -6,13 +6,7 @@ const config: CodegenConfig = {
   ignoreNoDocuments: true, // for better experience with the watcher
   generates: {
     './generated/graphql.d.ts': {
-      //
-      // preset: 'client',
-      plugins: [
-        'typescript',
-        'typescript-operations',
-        // 'typescript-graphql-request',
-      ],
+      plugins: ['typescript', 'typescript-operations'],
     },
   },
 };

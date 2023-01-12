@@ -10,6 +10,7 @@ import DesignSection from '../components/SectionDesign/DesignSection';
 import LeafPattern from '../components/BgPatterns/LeafPattern/LeafPattern';
 import { getGraphqlClient } from '../lib/graphql';
 import { gql } from 'graphql-request';
+import { GetDesignQuery } from '../generated/graphql';
 
 const query = gql`
   query getDesign($id: ID) {
@@ -120,7 +121,7 @@ export default function WebDesign({
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
   const client = getGraphqlClient();
-  let data;
+  let data: GetDesignQuery | undefined;
 
   if (params && params.designid === 'web-design') {
     data = await client.request(query, { id: '1' });
@@ -134,15 +135,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     data = await client.request(query, { id: '3' });
   }
 
-  const { Meta, Hero, Projects, DesignsNav, Cta } =
-    data.projectPage.data.attributes;
+  const page = data?.projectPage?.data?.attributes;
 
   const props = {
-    meta: { ...Meta },
-    hero: { ...Hero },
-    projects: Projects,
-    design: DesignsNav,
-    cta: { ...Cta },
+    meta: page?.Meta,
+    hero: page?.Hero,
+    projects: page?.Projects,
+    design: page?.DesignsNav,
+    cta: page?.Cta,
   };
   return {
     props,
