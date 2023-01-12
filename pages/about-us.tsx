@@ -13,6 +13,7 @@ import LocationsNavWrapper from '../components/LocationsNav/LocationsNavWrapper/
 import * as LocationsNavCard from '../components/LocationsNav/LocationsNavCard/LocationsNavCard';
 import { getGraphqlClient } from '../lib/graphql';
 import { gql } from 'graphql-request';
+import { GetAboutQuery } from '../generated/graphql';
 
 const query = gql`
   query getAbout {
@@ -139,7 +140,7 @@ const AboutUs = ({ meta, hero, weAre, weBring, locationsNav, cta }: Props) => {
       <GenericPageMeta.default {...meta} />
       <Section hasHero>
         <AboutWrapper>
-          <AboutCard.default {...hero}>
+          <AboutCard.default {...hero} isHero>
             <TwoCirclesHero />
             <BigCircle />
           </AboutCard.default>
@@ -180,17 +181,16 @@ export default AboutUs;
 
 export const getStaticProps: GetStaticProps = async () => {
   const client = getGraphqlClient();
-  const data = await client.request(query);
-  const { Meta, Hero, WeAre, LocationsNav, WeBring, Cta } =
-    data.about.data.attributes;
+  const data: GetAboutQuery = await client.request(query);
+  const page = data?.about?.data?.attributes;
 
   const props = {
-    meta: { ...Meta },
-    hero: { ...Hero, isHero: true },
-    weAre: { ...WeAre },
-    locationsNav: LocationsNav,
-    weBring: { ...WeBring },
-    cta: { ...Cta },
+    meta: page?.Meta,
+    hero: page?.Hero,
+    weAre: page?.WeAre,
+    locationsNav: page?.LocationsNav,
+    weBring: page?.WeBring,
+    cta: page?.Cta,
   };
 
   return { props, revalidate: 1 };

@@ -10,6 +10,7 @@ import * as GenericPageMeta from '../components/PageMeta/GenericPageMeta';
 import { GetStaticProps } from 'next';
 import { getGraphqlClient } from '../lib/graphql';
 import { gql } from 'graphql-request';
+import { GetHomeQuery } from '../generated/graphql';
 
 const query = gql`
   query getHome {
@@ -127,15 +128,16 @@ export default function Home({ meta, hero, design, features, cta }: Props) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const client = getGraphqlClient();
-  const data = await client.request(query);
-  const { Meta, Hero, Designs, Cta, Features } = data.home.data.attributes;
+  const data: GetHomeQuery = await client.request(query);
+
+  const page = data?.home?.data?.attributes;
 
   const props = {
-    meta: { ...Meta },
-    hero: { ...Hero },
-    design: Designs,
-    features: Features,
-    cta: { ...Cta },
+    meta: page?.Meta,
+    hero: page?.Hero,
+    design: page?.Designs,
+    features: page?.Features,
+    cta: page?.Cta,
   };
   return {
     props,

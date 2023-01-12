@@ -8,6 +8,8 @@ export type Props = {
   btnText: string;
 };
 
+// export type Props = ComponentPageCta;
+
 const Cta: NextPage<Props> = ({ title, text, btnText }) => {
   return (
     <div className={styles.cta}>

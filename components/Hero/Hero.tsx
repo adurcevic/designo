@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -8,18 +9,9 @@ import GraphicPattern from './HeroDesignPatterns/GraphicPattern/GraphicPattern';
 import MobileDesignPattern from './HeroDesignPatterns/MobilePattern/MobileDesignPattern';
 import TabletDesignPattern from './HeroDesignPatterns/TabletPattern/TabletDesignPattern';
 import Button from '../Button/Button';
+import { ComponentPageHero } from '../../generated/graphql';
 
-export type Props = {
-  btnText?: string;
-  children?: JSX.Element | JSX.Element[];
-  title: string;
-  text: string;
-  image?: {
-    data: { attributes: { url: string; width: number; height: number } };
-  };
-  hasDesign?: boolean;
-  pattern?: 'web' | 'app' | 'graphic';
-};
+export type Props = ComponentPageHero & { hasDesign?: boolean };
 
 const Hero: NextPage<Props> = ({
   btnText,
@@ -62,16 +54,18 @@ const Hero: NextPage<Props> = ({
         </div>
         {image && (
           <div className={styles.imgWrapper}>
-            <Image
-              className={
-                isLoaded ? `${styles.img} ${styles.visible}` : styles.img
-              }
-              src={image.data.attributes.url}
-              alt=""
-              width={image.data.attributes.width}
-              height={image.data.attributes.height}
-              priority
-            />
+            {image && (
+              <Image
+                className={
+                  isLoaded ? `${styles.img} ${styles.visible}` : styles.img
+                }
+                src={image.data!.attributes!.url}
+                alt=""
+                width={Number(image.data!.attributes!.width)}
+                height={Number(image.data!.attributes!.height)}
+                priority
+              />
+            )}
           </div>
         )}
       </div>

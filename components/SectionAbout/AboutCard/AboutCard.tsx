@@ -2,14 +2,9 @@ import { NextPage } from 'next';
 import { useRef } from 'react';
 import useIntersection from '../../../hooks/useIntersection';
 import styles from './AboutCard.module.scss';
+import { ComponentPageAboutCard } from '../../../generated/graphql';
 
-export type Props = {
-  title: string;
-  mainText: string;
-  secondaryText?: string;
-  imgMobile: { data: { attributes: { url: string } } };
-  imgTablet: { data: { attributes: { url: string } } };
-  imgDesktop: { data: { attributes: { url: string } } };
+export type Props = ComponentPageAboutCard & {
   isHero?: boolean;
   isReverse?: boolean;
   children: JSX.Element | JSX.Element[];
@@ -33,17 +28,17 @@ const AboutCard: NextPage<Props> = ({
     <div className={`${styles.card} ${isReverse ? styles.reverseCard : ''}`}>
       <picture>
         <source
-          srcSet={imgMobile.data.attributes.url}
+          srcSet={imgMobile.data?.attributes?.url}
           media="(max-width: 767px)"
         />
         <source
-          srcSet={imgTablet.data.attributes.url}
+          srcSet={imgTablet.data?.attributes?.url}
           media="(max-width: 1023px)"
         />
         <img
           className={`${styles.img} ${!isHero ? styles.cardImg : ''}`}
           alt=""
-          src={imgDesktop.data.attributes.url}
+          src={imgDesktop.data?.attributes?.url}
         />
       </picture>
       <div

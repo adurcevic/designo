@@ -4,15 +4,9 @@ import { useRef } from 'react';
 import useIntersection from '../../hooks/useIntersection';
 import styles from './DesignCard.module.scss';
 import ChevronRight from '../Icons/ChevronRight';
+import { ComponentPageDesignCard } from '../../generated/graphql';
 
-export type Props = {
-  title: string;
-  text: string;
-  slug: string;
-  imgMobile: { data: { attributes: { url: string } } };
-  imgTablet: { data: { attributes: { url: string } } };
-  imgDesktop: { data: { attributes: { url: string } } };
-};
+export type Props = ComponentPageDesignCard;
 
 const DesignCard: NextPage<Props> = ({
   title,
@@ -34,16 +28,16 @@ const DesignCard: NextPage<Props> = ({
         <div className={styles.overlay}></div>
         <picture>
           <source
-            srcSet={imgMobile.data.attributes.url}
+            srcSet={imgMobile.data?.attributes?.url}
             media="(max-width: 768px)"
           />
           <source
-            srcSet={imgTablet.data.attributes.url}
+            srcSet={imgTablet.data?.attributes?.url}
             media="(max-width: 1024px)"
           />
           <img
             className={styles.img}
-            src={imgDesktop.data.attributes.url}
+            src={imgDesktop.data?.attributes?.url}
             alt=""
           ></img>
         </picture>

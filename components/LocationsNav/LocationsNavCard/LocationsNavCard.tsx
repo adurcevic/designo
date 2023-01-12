@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { NextPage } from 'next';
 import { useRef } from 'react';
 import styles from './LocationsNavCard.module.scss';
@@ -5,14 +6,9 @@ import Image from 'next/image';
 import Button from '../../Button/Button';
 import useIntersection from '../../../hooks/useIntersection';
 import SingleCircle from '../../BgPatterns/SingleCircle';
+import { ComponentPageLocationNav } from '../../../generated/graphql';
 
-export type Props = {
-  image: {
-    data: { attributes: { url: string; width: number; height: number } };
-  };
-  title: string;
-  btnText: string;
-};
+export type Props = ComponentPageLocationNav;
 
 const LocationsNavCard: NextPage<Props> = ({ image, title, btnText }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -24,13 +20,15 @@ const LocationsNavCard: NextPage<Props> = ({ image, title, btnText }) => {
       className={`${styles.card} ${isVisible ? styles.visible : ''}`}
     >
       <div className={styles.imgWrapper}>
-        <Image
-          className={styles.img}
-          src={image.data.attributes.url}
-          alt=""
-          width={image.data.attributes.width}
-          height={image.data.attributes.height}
-        />
+        {image && (
+          <Image
+            className={styles.img}
+            src={image.data!.attributes!.url}
+            alt=""
+            width={Number(image.data!.attributes!.width)}
+            height={Number(image.data!.attributes!.height)}
+          />
+        )}
         <SingleCircle />
       </div>
       <div className={styles.content}>

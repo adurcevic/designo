@@ -1,17 +1,13 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Image from 'next/image';
 import { NextPage } from 'next';
 import { useRef } from 'react';
 import useIntersection from '../../hooks/useIntersection';
 import styles from './FeatureCard.module.scss';
 import SingleCircle from '../BgPatterns/SingleCircle';
+import { ComponentPageFeatureCard } from '../../generated/graphql';
 
-export type Props = {
-  title: string;
-  text: string;
-  image: {
-    data: { attributes: { url: string; width: number; height: number } };
-  };
-};
+export type Props = ComponentPageFeatureCard;
 
 const FeatureCard: NextPage<Props> = ({ title, text, image }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -23,13 +19,15 @@ const FeatureCard: NextPage<Props> = ({ title, text, image }) => {
       className={isVisible ? `${styles.card} ${styles.visible}` : styles.card}
     >
       <div className={styles.imgWrapper}>
-        <Image
-          className={styles.img}
-          src={image.data.attributes.url}
-          alt=""
-          width={image.data.attributes.width}
-          height={image.data.attributes.height}
-        />
+        {image && (
+          <Image
+            className={styles.img}
+            src={image.data!.attributes!.url}
+            alt=""
+            width={Number(image.data!.attributes!.width)}
+            height={Number(image.data!.attributes!.height)}
+          />
+        )}
         <SingleCircle />
       </div>
       <div className={styles.content}>
