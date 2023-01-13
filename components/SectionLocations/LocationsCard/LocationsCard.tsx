@@ -3,17 +3,9 @@ import dynamic from 'next/dynamic';
 import { NextPage } from 'next';
 import ThreeCircles from '../../BgPatterns/ThreeCircles/ThreeCircles';
 import TwoCircles from '../../BgPatterns/TwoCircles/TwoCircles';
+import { ComponentPageLocationCard } from '../../../generated/graphql';
 
-export type Props = {
-  country: string;
-  office: string;
-  street: string;
-  city: string;
-  phone: string;
-  email: string;
-  lat: string;
-  lng: string;
-};
+export type Props = ComponentPageLocationCard;
 
 const LocationsCard: NextPage<Props> = ({
   country,

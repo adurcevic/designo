@@ -9,8 +9,33 @@ const ContactForm = () => {
   return (
     <Formik
       initialValues={{ name: '', email: '', phone: '', message: '' }}
-      onSubmit={(values, { resetForm }) => {
-        resetForm();
+      onSubmit={async (values, { resetForm }) => {
+        try {
+          const res = await fetch('http://127.0.0.1:1337/api/messages', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              data: {
+                Message: {
+                  name: values.name,
+                  email: values.email,
+                  phone: values.phone,
+                  message: values.message,
+                },
+              },
+            }),
+          });
+
+          if (!res.ok) {
+            throw res;
+          }
+
+          resetForm();
+        } catch (err) {
+          console.log(err);
+        }
       }}
       validationSchema={Yup.object({
         name: Yup.string().required('Can`t be empty'),

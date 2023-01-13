@@ -6,6 +6,7 @@ import L from 'leaflet';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import { Maybe } from 'graphql/jsutils/Maybe';
 
 // Workaround for displaying marker on leaflet map
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -18,25 +19,27 @@ L.Icon.Default.mergeOptions({
 });
 
 type Props = {
-  lat: string;
-  lng: string;
+  lat: Maybe<string>;
+  lng: Maybe<string>;
 };
 
 const Map: NextPage<Props> = ({ lat, lng }) => {
   return (
     <>
-      <MapContainer
-        className={styles.map}
-        center={[+lat, +lng]}
-        zoom={13}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
-        />
-        <Marker position={[+lat, +lng]}></Marker>
-      </MapContainer>
+      {lat && lng && (
+        <MapContainer
+          className={styles.map}
+          center={[+lat, +lng]}
+          zoom={13}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+          />
+          <Marker position={[+lat, +lng]}></Marker>
+        </MapContainer>
+      )}
     </>
   );
 };
