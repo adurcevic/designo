@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import styles from './Hero.module.scss';
 import WebPattern from './HeroDesignPatterns/WebPattern/WebPattern';
@@ -10,6 +10,7 @@ import MobileDesignPattern from './HeroDesignPatterns/MobilePattern/MobileDesign
 import TabletDesignPattern from './HeroDesignPatterns/TabletPattern/TabletDesignPattern';
 import Button from '../Button/Button';
 import { ComponentPageHero } from '../../generated/graphql';
+import useIntersection from '../../hooks/useIntersection';
 
 export type Props = ComponentPageHero & { hasDesign?: boolean };
 
@@ -21,21 +22,16 @@ const Hero: NextPage<Props> = ({
   hasDesign,
   pattern,
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    setIsLoaded(true);
-
-    return () => {
-      setIsLoaded(false);
-    };
-  }, []);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const isHeroVisible = useIntersection(heroRef);
 
   return (
     <div className={hasDesign ? styles.heroDesign : styles.hero}>
       <div className={hasDesign ? styles.heroInnerDesign : styles.heroInner}>
         <div
+          ref={heroRef}
           className={
-            isLoaded
+            isHeroVisible
               ? `${styles.content} ${styles.visible} ${
                   hasDesign && styles.contentDesign
                 }`
@@ -57,7 +53,7 @@ const Hero: NextPage<Props> = ({
             {image && (
               <Image
                 className={
-                  isLoaded ? `${styles.img} ${styles.visible}` : styles.img
+                  isHeroVisible ? `${styles.img} ${styles.visible}` : styles.img
                 }
                 src={image.data!.attributes!.url}
                 alt=""

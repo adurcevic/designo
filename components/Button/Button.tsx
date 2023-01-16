@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import styles from './Button.module.scss';
 
 interface CommonProps {
-  text: string;
+  text: string | JSX.Element;
   dark?: boolean;
 }
 
@@ -27,7 +27,7 @@ const Button: NextPage<Props> = (props) => {
       <button
         type={type ? 'submit' : 'button'}
         className={`${dark ? styles.btnDark : styles.btn} ${
-          type ? styles.submit : ''
+          type === 'submit' ? styles.submit : ''
         }`}
         onClick={onClick}
       >

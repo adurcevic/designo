@@ -10,6 +10,8 @@ import LogoImg from '../public/logo-dark.png';
 import Overlay from '../components/Overlay/Overlay';
 import Footer from '../components/Layout/Footer/Footer';
 import useWindowSize from '../hooks/useWindowSize';
+import CookieBanner from '../components/CookieBanner/CookieBanner';
+import { CookieProvider } from '../context/CookiesContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -39,6 +41,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Overlay isVisible={isNavOpen} />
+      <CookieProvider>
+        <CookieBanner />
+      </CookieProvider>
       <Header>
         <Logo
           isOpen={isNavOpen}

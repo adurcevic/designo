@@ -6,9 +6,11 @@ import Button from '../../Button/Button';
 import ErrorIcon from '../../Icons/ErrorIcon';
 import { data } from './FormData';
 import Modal from '../../Modal/Modal';
+import { BeatLoader } from 'react-spinners';
 
 const ContactForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
   const [modalContent, setModalContent] = useState({
     title: '',
     subtitle: '',
@@ -27,6 +29,7 @@ const ContactForm = () => {
         initialValues={{ name: '', email: '', phone: '', message: '' }}
         onSubmit={async (values, { resetForm }) => {
           try {
+            setIsFetching(true);
             const res = await fetch('http://127.0.0.1:1337/api/messages', {
               method: 'POST',
               headers: {
@@ -65,6 +68,7 @@ const ContactForm = () => {
             setIsModalOpen(true);
             console.log(err);
           } finally {
+            setIsFetching(false);
             setTimeout(() => {
               setIsModalOpen(false);
               if (isError) setIsError(false);
@@ -115,7 +119,13 @@ const ContactForm = () => {
             <Button
               type="submit"
               kind="Button"
-              text={'Submit'}
+              text={
+                isFetching ? (
+                  <BeatLoader aria-hidden="true" color="#e7816b" size={12} />
+                ) : (
+                  'Submit'
+                )
+              }
               disabled={formik.isSubmitting}
             />
           </Form>

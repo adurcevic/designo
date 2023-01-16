@@ -37,6 +37,15 @@ const Navbar: NextPage<Props> = ({
             {item.name}
           </NavLink>
         ))}
+        {hasFooter && (
+          <NavLink
+            href="privacy-policy"
+            className={hasFooter ? styles.footerLink : styles.link}
+            activeClassName={hasFooter ? '' : styles.active}
+          >
+            Privacy Policy
+          </NavLink>
+        )}
       </div>
     </nav>
   );

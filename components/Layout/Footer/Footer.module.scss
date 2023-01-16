@@ -11,7 +11,7 @@
   @include layout.flex(center, center, column);
   gap: 40px;
 
-  @media (--medium) {
+  @media (--large) {
     padding: 80px 39px;
     gap: 31px;
   }
@@ -30,12 +30,12 @@
   nav {
     padding-top: 32px;
 
-    @media (--medium) {
+    @media (--large) {
       padding: 0;
     }
   }
 
-  @media (--medium) {
+  @media (--large) {
     @include layout.flex(center, space-between, row);
     padding-bottom: 40px;
     border-bottom: 1px solid rgba(var(--color-grey), 0.1);
@@ -47,7 +47,7 @@
   padding-bottom: 32px;
   border-bottom: 1px solid rgba(var(--color-grey), 0.1);
 
-  @media (--medium) {
+  @media (--large) {
     padding: 0;
     border-bottom: none;
   }
@@ -57,7 +57,7 @@
   @include layout.flex(center, center, column);
   gap: 40px;
 
-  @media (--medium) {
+  @media (--large) {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -65,7 +65,7 @@
     justify-items: start;
   }
 
-  @media (--medium) {
+  @media (--large) {
     & div:last-child {
       justify-self: end;
     }
@@ -82,7 +82,7 @@
     font-weight: bold;
   }
 
-  @media (--medium) {
+  @media (--large) {
     align-items: flex-start;
 
     &:nth-child(2) {
