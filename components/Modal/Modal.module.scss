@@ -1,0 +1,54 @@
+@use 'layout';
+@use 'fonts';
+
+.modal {
+  @include layout.flex(center, center);
+  width: 100%;
+  max-width: 450px;
+  margin: 0 24px;
+  background-color: var(--color-white);
+  border-radius: 15px;
+  box-shadow: 1px 2px 7px var(--color-dark-grey);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  @media (--medium) {
+    margin: 0;
+  }
+}
+
+.open {
+  opacity: 1;
+}
+
+.modalInner {
+  @include layout.flex(flex-start, center, column);
+  width: 100%;
+  padding: 24px;
+}
+
+.titleWrapper {
+  @include layout.flex(center, space-between);
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.iconWrapper {
+  @include layout.flex(center, center);
+  height: 32px;
+  width: 32px;
+}
+
+.title {
+  @include fonts.small-heading-2;
+  color: var(--color-peach);
+}
+
+.text {
+  @include fonts.small-body;
+  color: var(--color-dark-grey);
+
+  @media (--medium) {
+    @include fonts.medium-body;
+  }
+}

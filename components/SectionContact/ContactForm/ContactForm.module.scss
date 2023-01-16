@@ -1,6 +1,16 @@
 @use 'layout';
 @use 'fonts';
 
+.modalWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  @include layout.flex(center, center);
+  z-index: 15;
+}
+
 .form {
   @include layout.flex(center, center, column);
   gap: 25px;
