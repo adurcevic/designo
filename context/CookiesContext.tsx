@@ -1,18 +1,18 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 
 type ContextType = {
-  accepted: boolean | undefined;
+  accepted: boolean | null;
   accept: () => void;
 };
 
-const CookieContext = createContext<ContextType | undefined>(undefined);
+const CookieContext = createContext<ContextType | null>(null);
 
 type ProviderProps = { children: JSX.Element | JSX.Element[] };
 
 const STORAGE_KEY = 'designo.cookie-banner.accepted';
 
 const CookieProvider = ({ children }: ProviderProps) => {
-  const [accepted, setAccepted] = useState<boolean | undefined>(undefined);
+  const [accepted, setAccepted] = useState<boolean | null>(null);
 
   const accept = () => {
     setAccepted(true);
@@ -33,7 +33,7 @@ const CookieProvider = ({ children }: ProviderProps) => {
 const useCookieState = () => {
   const context = useContext(CookieContext);
 
-  if (context === undefined) {
+  if (context === null) {
     throw new Error('no provider');
   }
 

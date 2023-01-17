@@ -269,6 +269,33 @@ export type ComponentPageLocationNavInput = {
   title?: InputMaybe<Scalars['String']>;
 };
 
+export type ComponentPageMessage = {
+  __typename?: 'ComponentPageMessage';
+  email: Scalars['String'];
+  id: Scalars['ID'];
+  message: Scalars['String'];
+  name: Scalars['String'];
+  phone: Scalars['String'];
+};
+
+export type ComponentPageMessageFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentPageMessageFiltersInput>>>;
+  email?: InputMaybe<StringFilterInput>;
+  message?: InputMaybe<StringFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentPageMessageFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentPageMessageFiltersInput>>>;
+  phone?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentPageMessageInput = {
+  email?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  message?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+};
+
 export type ComponentPageMeta = {
   __typename?: 'ComponentPageMeta';
   description?: Maybe<Scalars['String']>;
@@ -287,6 +314,21 @@ export type ComponentPageMetaFiltersInput = {
 export type ComponentPageMetaInput = {
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['ID']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentPagePrivacyArticle = {
+  __typename?: 'ComponentPagePrivacyArticle';
+  date?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  text?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type ComponentPagePrivacyArticleInput = {
+  date?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  text?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
 };
 
@@ -402,7 +444,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = About | ComponentPageAboutCard | ComponentPageCta | ComponentPageDesignCard | ComponentPageFeatureCard | ComponentPageHero | ComponentPageLocationCard | ComponentPageLocationNav | ComponentPageMeta | ComponentPageProjectCard | Contact | Home | I18NLocale | Location | ProjectPage | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = About | ComponentPageAboutCard | ComponentPageCta | ComponentPageDesignCard | ComponentPageFeatureCard | ComponentPageHero | ComponentPageLocationCard | ComponentPageLocationNav | ComponentPageMessage | ComponentPageMeta | ComponentPagePrivacyArticle | ComponentPageProjectCard | Contact | Home | I18NLocale | Location | Message | PrivacyPolicy | ProjectPage | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type Home = {
   __typename?: 'Home';
@@ -593,10 +635,52 @@ export type LocationInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
+export type Message = {
+  __typename?: 'Message';
+  Message?: Maybe<ComponentPageMessage>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type MessageEntity = {
+  __typename?: 'MessageEntity';
+  attributes?: Maybe<Message>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type MessageEntityResponse = {
+  __typename?: 'MessageEntityResponse';
+  data?: Maybe<MessageEntity>;
+};
+
+export type MessageEntityResponseCollection = {
+  __typename?: 'MessageEntityResponseCollection';
+  data: Array<MessageEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type MessageFiltersInput = {
+  Message?: InputMaybe<ComponentPageMessageFiltersInput>;
+  and?: InputMaybe<Array<InputMaybe<MessageFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<MessageFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<MessageFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type MessageInput = {
+  Message?: InputMaybe<ComponentPageMessageInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
+  createMessage?: Maybe<MessageEntityResponse>;
   createProjectPage?: Maybe<ProjectPageEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -608,6 +692,8 @@ export type Mutation = {
   deleteContact?: Maybe<ContactEntityResponse>;
   deleteHome?: Maybe<HomeEntityResponse>;
   deleteLocation?: Maybe<LocationEntityResponse>;
+  deleteMessage?: Maybe<MessageEntityResponse>;
+  deletePrivacyPolicy?: Maybe<PrivacyPolicyEntityResponse>;
   deleteProjectPage?: Maybe<ProjectPageEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -631,6 +717,8 @@ export type Mutation = {
   updateFileInfo: UploadFileEntityResponse;
   updateHome?: Maybe<HomeEntityResponse>;
   updateLocation?: Maybe<LocationEntityResponse>;
+  updateMessage?: Maybe<MessageEntityResponse>;
+  updatePrivacyPolicy?: Maybe<PrivacyPolicyEntityResponse>;
   updateProjectPage?: Maybe<ProjectPageEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -646,6 +734,11 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String'];
   password: Scalars['String'];
   passwordConfirmation: Scalars['String'];
+};
+
+
+export type MutationCreateMessageArgs = {
+  data: MessageInput;
 };
 
 
@@ -671,6 +764,11 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
+};
+
+
+export type MutationDeleteMessageArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -765,6 +863,17 @@ export type MutationUpdateLocationArgs = {
 };
 
 
+export type MutationUpdateMessageArgs = {
+  data: MessageInput;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdatePrivacyPolicyArgs = {
+  data: PrivacyPolicyInput;
+};
+
+
 export type MutationUpdateProjectPageArgs = {
   data: ProjectPageInput;
   id: Scalars['ID'];
@@ -816,6 +925,32 @@ export type PaginationArg = {
   page?: InputMaybe<Scalars['Int']>;
   pageSize?: InputMaybe<Scalars['Int']>;
   start?: InputMaybe<Scalars['Int']>;
+};
+
+export type PrivacyPolicy = {
+  __typename?: 'PrivacyPolicy';
+  Meta?: Maybe<ComponentPageMeta>;
+  PrivacyArticle: ComponentPagePrivacyArticle;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type PrivacyPolicyEntity = {
+  __typename?: 'PrivacyPolicyEntity';
+  attributes?: Maybe<PrivacyPolicy>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type PrivacyPolicyEntityResponse = {
+  __typename?: 'PrivacyPolicyEntityResponse';
+  data?: Maybe<PrivacyPolicyEntity>;
+};
+
+export type PrivacyPolicyInput = {
+  Meta?: InputMaybe<ComponentPageMetaInput>;
+  PrivacyArticle?: InputMaybe<ComponentPagePrivacyArticleInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
 export type ProjectPage = {
@@ -899,6 +1034,9 @@ export type Query = {
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   location?: Maybe<LocationEntityResponse>;
   me?: Maybe<UsersPermissionsMe>;
+  message?: Maybe<MessageEntityResponse>;
+  messages?: Maybe<MessageEntityResponseCollection>;
+  privacyPolicy?: Maybe<PrivacyPolicyEntityResponse>;
   projectPage?: Maybe<ProjectPageEntityResponse>;
   projectPages?: Maybe<ProjectPageEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
@@ -940,6 +1078,24 @@ export type QueryI18NLocalesArgs = {
 
 
 export type QueryLocationArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryMessageArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryMessagesArgs = {
+  filters?: InputMaybe<MessageFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryPrivacyPolicyArgs = {
   publicationState?: InputMaybe<PublicationState>;
 };
 
@@ -1432,3 +1588,8 @@ export type GetLocationQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetLocationQuery = { __typename?: 'Query', location?: { __typename?: 'LocationEntityResponse', data?: { __typename?: 'LocationEntity', attributes?: { __typename?: 'Location', Meta?: { __typename?: 'ComponentPageMeta', title: string, description?: string | null } | null, Locations?: Array<{ __typename?: 'ComponentPageLocationCard', country: string, office: string, street: string, city: string, phone: string, email: string, lat?: string | null, lng?: string | null } | null> | null, Cta?: { __typename?: 'ComponentPageCta', title: string, text: string, btnText: string } | null } | null } | null } | null };
+
+export type GetPrivacyPolicyQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPrivacyPolicyQuery = { __typename?: 'Query', privacyPolicy?: { __typename?: 'PrivacyPolicyEntityResponse', data?: { __typename?: 'PrivacyPolicyEntity', attributes?: { __typename?: 'PrivacyPolicy', Meta?: { __typename?: 'ComponentPageMeta', title: string, description?: string | null } | null, PrivacyArticle: { __typename?: 'ComponentPagePrivacyArticle', title?: string | null, date?: string | null, text?: string | null } } | null } | null } | null };
