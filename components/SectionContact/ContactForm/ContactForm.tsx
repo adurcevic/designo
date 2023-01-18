@@ -7,6 +7,7 @@ import ErrorIcon from '../../Icons/ErrorIcon';
 import { data } from './FormData';
 import Modal from '../../Modal/Modal';
 import { BeatLoader } from 'react-spinners';
+import { apiBaseUrl } from '../../../config/public';
 
 const ContactForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,7 +31,7 @@ const ContactForm = () => {
         onSubmit={async (values, { resetForm }) => {
           try {
             setIsFetching(true);
-            const res = await fetch('http://127.0.0.1:1337/api/messages', {
+            const res = await fetch(`${apiBaseUrl}/messages`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Image from 'next/image';
 import { NextPage } from 'next';
 import { useRef } from 'react';
@@ -19,15 +18,13 @@ const FeatureCard: NextPage<Props> = ({ title, text, image }) => {
       className={isVisible ? `${styles.card} ${styles.visible}` : styles.card}
     >
       <div className={styles.imgWrapper}>
-        {image && (
-          <Image
-            className={styles.img}
-            src={image.data!.attributes!.url}
-            alt=""
-            width={Number(image.data!.attributes!.width)}
-            height={Number(image.data!.attributes!.height)}
-          />
-        )}
+        <Image
+          className={styles.img}
+          src={image?.data?.attributes?.url ?? ''}
+          alt=""
+          width={Number(image?.data?.attributes?.width)}
+          height={Number(image?.data?.attributes?.height)}
+        />
         <SingleCircle />
       </div>
       <div className={styles.content}>

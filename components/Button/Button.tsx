@@ -8,7 +8,7 @@ interface CommonProps {
 
 interface ButtonProps extends CommonProps {
   kind: 'Button';
-  type?: string;
+  type?: 'button' | 'submit';
   disabled?: boolean;
   onClick?: () => void;
 }
@@ -25,7 +25,7 @@ const Button: NextPage<Props> = (props) => {
     const { text, dark, type, onClick } = props;
     return (
       <button
-        type={type ? 'submit' : 'button'}
+        type={type ?? 'button'}
         className={`${dark ? styles.btnDark : styles.btn} ${
           type === 'submit' ? styles.submit : ''
         }`}

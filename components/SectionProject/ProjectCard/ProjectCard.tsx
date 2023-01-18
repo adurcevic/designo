@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Image from 'next/image';
 import styles from './ProjectCard.module.scss';
 import { NextPage } from 'next';
@@ -9,15 +8,13 @@ export type Props = ComponentPageProjectCard;
 const ProjectCard: NextPage<Props> = ({ image, title, text }) => {
   return (
     <div className={styles.card}>
-      {Image && (
-        <Image
-          className={styles.img}
-          src={image.data!.attributes!.url}
-          alt=""
-          height={Number(image.data!.attributes!.height)}
-          width={Number(image.data!.attributes!.width)}
-        />
-      )}
+      <Image
+        className={styles.img}
+        src={image?.data?.attributes?.url ?? ''}
+        alt=""
+        height={Number(image?.data?.attributes?.height)}
+        width={Number(image?.data?.attributes?.width)}
+      />
       <div className={styles.content}>
         <div className={styles.contentInner}>
           <p className={styles.title}>{title}</p>
