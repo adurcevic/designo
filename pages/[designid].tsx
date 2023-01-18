@@ -24,6 +24,7 @@ const query = gql`
           Hero {
             title
             text
+            pattern
           }
           Projects {
             image {

@@ -40,6 +40,14 @@
     }
   }
 
+  & a {
+    color: var(--color-peach);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   & p {
     @include fonts.small-body;
     color: var(--color-dark-grey);

@@ -19,7 +19,7 @@ export type About = {
   __typename?: 'About';
   Cta: ComponentPageCta;
   Hero: ComponentPageAboutCard;
-  LocationsNav?: Maybe<Array<Maybe<ComponentPageLocationNav>>>;
+  LocationsNav: Array<Maybe<ComponentPageLocationNav>>;
   Meta: ComponentPageMeta;
   WeAre: ComponentPageAboutCard;
   WeBring: ComponentPageAboutCard;
@@ -319,10 +319,10 @@ export type ComponentPageMetaInput = {
 
 export type ComponentPagePrivacyArticle = {
   __typename?: 'ComponentPagePrivacyArticle';
-  date?: Maybe<Scalars['String']>;
+  date: Scalars['String'];
   id: Scalars['ID'];
-  text?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
+  text: Scalars['String'];
+  title: Scalars['String'];
 };
 
 export type ComponentPagePrivacyArticleInput = {
@@ -357,9 +357,9 @@ export type ComponentPageProjectCardInput = {
 
 export type Contact = {
   __typename?: 'Contact';
-  Hero?: Maybe<ComponentPageHero>;
+  Hero: ComponentPageHero;
   LocationsNav: Array<Maybe<ComponentPageLocationNav>>;
-  Meta?: Maybe<ComponentPageMeta>;
+  Meta: ComponentPageMeta;
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -602,9 +602,9 @@ export type JsonFilterInput = {
 
 export type Location = {
   __typename?: 'Location';
-  Cta?: Maybe<ComponentPageCta>;
-  Locations?: Maybe<Array<Maybe<ComponentPageLocationCard>>>;
-  Meta?: Maybe<ComponentPageMeta>;
+  Cta: ComponentPageCta;
+  Locations: Array<Maybe<ComponentPageLocationCard>>;
+  Meta: ComponentPageMeta;
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -929,7 +929,7 @@ export type PaginationArg = {
 
 export type PrivacyPolicy = {
   __typename?: 'PrivacyPolicy';
-  Meta?: Maybe<ComponentPageMeta>;
+  Meta: ComponentPageMeta;
   PrivacyArticle: ComponentPagePrivacyArticle;
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
@@ -955,11 +955,11 @@ export type PrivacyPolicyInput = {
 
 export type ProjectPage = {
   __typename?: 'ProjectPage';
-  Cta?: Maybe<ComponentPageCta>;
-  DesignsNav?: Maybe<Array<Maybe<ComponentPageDesignCard>>>;
-  Hero?: Maybe<ComponentPageHero>;
-  Meta?: Maybe<ComponentPageMeta>;
-  Projects?: Maybe<Array<Maybe<ComponentPageProjectCard>>>;
+  Cta: ComponentPageCta;
+  DesignsNav: Array<Maybe<ComponentPageDesignCard>>;
+  Hero: ComponentPageHero;
+  Meta: ComponentPageMeta;
+  Projects: Array<Maybe<ComponentPageProjectCard>>;
   createdAt?: Maybe<Scalars['DateTime']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -1567,17 +1567,17 @@ export type GetDesignQueryVariables = Exact<{
 }>;
 
 
-export type GetDesignQuery = { __typename?: 'Query', projectPage?: { __typename?: 'ProjectPageEntityResponse', data?: { __typename?: 'ProjectPageEntity', attributes?: { __typename?: 'ProjectPage', Meta?: { __typename?: 'ComponentPageMeta', title: string, description?: string | null } | null, Hero?: { __typename?: 'ComponentPageHero', title: string, text: string } | null, Projects?: Array<{ __typename?: 'ComponentPageProjectCard', title: string, text: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, height?: number | null, width?: number | null } | null } | null } } | null> | null, DesignsNav?: Array<{ __typename?: 'ComponentPageDesignCard', title: string, text: string, slug: string, imgMobile: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgTablet: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgDesktop: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } } | null> | null, Cta?: { __typename?: 'ComponentPageCta', title: string, text: string, btnText: string } | null } | null } | null } | null };
+export type GetDesignQuery = { __typename?: 'Query', projectPage?: { __typename?: 'ProjectPageEntityResponse', data?: { __typename?: 'ProjectPageEntity', attributes?: { __typename?: 'ProjectPage', Meta: { __typename?: 'ComponentPageMeta', title: string, description?: string | null }, Hero: { __typename?: 'ComponentPageHero', title: string, text: string, pattern?: string | null }, Projects: Array<{ __typename?: 'ComponentPageProjectCard', title: string, text: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, height?: number | null, width?: number | null } | null } | null } } | null>, DesignsNav: Array<{ __typename?: 'ComponentPageDesignCard', title: string, text: string, slug: string, imgMobile: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgTablet: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgDesktop: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } } | null>, Cta: { __typename?: 'ComponentPageCta', title: string, text: string, btnText: string } } | null } | null } | null };
 
 export type GetAboutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutEntityResponse', data?: { __typename?: 'AboutEntity', attributes?: { __typename?: 'About', Meta: { __typename?: 'ComponentPageMeta', title: string, description?: string | null }, Hero: { __typename?: 'ComponentPageAboutCard', title: string, mainText: string, imgMobile: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgTablet: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgDesktop: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, WeAre: { __typename?: 'ComponentPageAboutCard', title: string, mainText: string, secondaryText?: string | null, imgMobile: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgTablet: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgDesktop: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, LocationsNav?: Array<{ __typename?: 'ComponentPageLocationNav', title: string, btnText: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null } | null } | null } } | null> | null, WeBring: { __typename?: 'ComponentPageAboutCard', title: string, mainText: string, secondaryText?: string | null, imgMobile: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgTablet: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgDesktop: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, Cta: { __typename?: 'ComponentPageCta', title: string, text: string, btnText: string } } | null } | null } | null };
+export type GetAboutQuery = { __typename?: 'Query', about?: { __typename?: 'AboutEntityResponse', data?: { __typename?: 'AboutEntity', attributes?: { __typename?: 'About', Meta: { __typename?: 'ComponentPageMeta', title: string, description?: string | null }, Hero: { __typename?: 'ComponentPageAboutCard', title: string, mainText: string, imgMobile: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgTablet: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgDesktop: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, WeAre: { __typename?: 'ComponentPageAboutCard', title: string, mainText: string, secondaryText?: string | null, imgMobile: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgTablet: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgDesktop: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, LocationsNav: Array<{ __typename?: 'ComponentPageLocationNav', title: string, btnText: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null } | null } | null } } | null>, WeBring: { __typename?: 'ComponentPageAboutCard', title: string, mainText: string, secondaryText?: string | null, imgMobile: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgTablet: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null }, imgDesktop: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } }, Cta: { __typename?: 'ComponentPageCta', title: string, text: string, btnText: string } } | null } | null } | null };
 
 export type GetContactQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetContactQuery = { __typename?: 'Query', contact?: { __typename?: 'ContactEntityResponse', data?: { __typename?: 'ContactEntity', attributes?: { __typename?: 'Contact', Meta?: { __typename?: 'ComponentPageMeta', title: string, description?: string | null } | null, Hero?: { __typename?: 'ComponentPageHero', title: string, text: string } | null, LocationsNav: Array<{ __typename?: 'ComponentPageLocationNav', title: string, btnText: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null } | null } | null } } | null> } | null } | null } | null };
+export type GetContactQuery = { __typename?: 'Query', contact?: { __typename?: 'ContactEntityResponse', data?: { __typename?: 'ContactEntity', attributes?: { __typename?: 'Contact', Meta: { __typename?: 'ComponentPageMeta', title: string, description?: string | null }, Hero: { __typename?: 'ComponentPageHero', title: string, text: string }, LocationsNav: Array<{ __typename?: 'ComponentPageLocationNav', title: string, btnText: string, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null } | null } | null } } | null> } | null } | null } | null };
 
 export type GetHomeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1587,9 +1587,9 @@ export type GetHomeQuery = { __typename?: 'Query', home?: { __typename?: 'HomeEn
 export type GetLocationQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetLocationQuery = { __typename?: 'Query', location?: { __typename?: 'LocationEntityResponse', data?: { __typename?: 'LocationEntity', attributes?: { __typename?: 'Location', Meta?: { __typename?: 'ComponentPageMeta', title: string, description?: string | null } | null, Locations?: Array<{ __typename?: 'ComponentPageLocationCard', country: string, office: string, street: string, city: string, phone: string, email: string, lat?: string | null, lng?: string | null } | null> | null, Cta?: { __typename?: 'ComponentPageCta', title: string, text: string, btnText: string } | null } | null } | null } | null };
+export type GetLocationQuery = { __typename?: 'Query', location?: { __typename?: 'LocationEntityResponse', data?: { __typename?: 'LocationEntity', attributes?: { __typename?: 'Location', Meta: { __typename?: 'ComponentPageMeta', title: string, description?: string | null }, Locations: Array<{ __typename?: 'ComponentPageLocationCard', country: string, office: string, street: string, city: string, phone: string, email: string, lat?: string | null, lng?: string | null } | null>, Cta: { __typename?: 'ComponentPageCta', title: string, text: string, btnText: string } } | null } | null } | null };
 
 export type GetPrivacyPolicyQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPrivacyPolicyQuery = { __typename?: 'Query', privacyPolicy?: { __typename?: 'PrivacyPolicyEntityResponse', data?: { __typename?: 'PrivacyPolicyEntity', attributes?: { __typename?: 'PrivacyPolicy', Meta?: { __typename?: 'ComponentPageMeta', title: string, description?: string | null } | null, PrivacyArticle: { __typename?: 'ComponentPagePrivacyArticle', title?: string | null, date?: string | null, text?: string | null } } | null } | null } | null };
+export type GetPrivacyPolicyQuery = { __typename?: 'Query', privacyPolicy?: { __typename?: 'PrivacyPolicyEntityResponse', data?: { __typename?: 'PrivacyPolicyEntity', attributes?: { __typename?: 'PrivacyPolicy', Meta: { __typename?: 'ComponentPageMeta', title: string, description?: string | null }, PrivacyArticle: { __typename?: 'ComponentPagePrivacyArticle', title: string, date: string, text: string } } | null } | null } | null };

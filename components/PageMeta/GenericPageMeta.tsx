@@ -2,19 +2,16 @@ import Head from 'next/head';
 import { NextPage } from 'next';
 import { ComponentPageMeta } from '../../generated/graphql';
 
-type ErrorProps = {
-  title: string;
-  description?: string;
-};
-
-export type Props = ComponentPageMeta | ErrorProps;
+export type Props = ComponentPageMeta;
 
 const GenericPageMeta: NextPage<Props> = ({ title, description }) => {
   return (
     <Head>
       <title>{title}</title>
       {description && <meta name="description" content={description} />}
-      <link rel="icon" href="/favicon-32x32.png" />
+      <meta property="og:title" content={title} />
+      {description && <meta property="og:description" content={description} />}
+      <meta property="og:type" content="website" />
     </Head>
   );
 };

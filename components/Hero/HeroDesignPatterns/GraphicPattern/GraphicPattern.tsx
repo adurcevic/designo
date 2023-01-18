@@ -11,12 +11,12 @@ const GraphicPattern = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="c">
+        <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" id="d">
           <stop stopColor="#5D0202" stopOpacity="0" offset="0%" />
           <stop stopColor="#5D0202" stopOpacity=".498" offset="100%" />
         </linearGradient>
       </defs>
-      <g fill="url(#c)" fillRule="evenodd" opacity=".309">
+      <g fill="url(#d)" fillRule="evenodd" opacity=".309">
         <circle
           transform="matrix(0 -1 -1 0 584 584)"
           cx="146"
