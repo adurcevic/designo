@@ -21,13 +21,18 @@
   }
 }
 
-.map {
+.spinnerWrapper {
+  @include layout.flex(center, center);
   width: 100%;
   height: 320px;
-  background-color: red;
 
   @media (--medium) {
+    height: 326px;
     border-radius: 15px;
+  }
+
+  @media (--medium) {
+    height: 326px;
   }
 }
 

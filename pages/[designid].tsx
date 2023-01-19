@@ -92,13 +92,7 @@ type Props = {
   cta: Cta.Props;
 };
 
-export default function WebDesign({
-  meta,
-  hero,
-  projects,
-  design,
-  cta,
-}: Props) {
+const Design = ({ meta, hero, projects, design, cta }: Props) => {
   return (
     <>
       <GenericPageMeta.default {...meta} />
@@ -125,7 +119,9 @@ export default function WebDesign({
       </Section>
     </>
   );
-}
+};
+
+export default Design;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;

@@ -101,7 +101,7 @@ type Props = {
   cta: Cta.Props;
 };
 
-export default function Home({ meta, hero, design, features, cta }: Props) {
+const Home = ({ meta, hero, design, features, cta }: Props) => {
   return (
     <div>
       <GenericPageMeta.default {...meta} />
@@ -132,7 +132,9 @@ export default function Home({ meta, hero, design, features, cta }: Props) {
       </Section>
     </div>
   );
-}
+};
+
+export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
   const client = getGraphqlClient();

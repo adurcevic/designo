@@ -8,6 +8,7 @@ import LocationsWrapper from '../components/SectionLocations/LocationsWrapper/Lo
 import { getGraphqlClient } from '../lib/graphql';
 import { gql } from 'graphql-request';
 import { GetLocationQuery } from '../generated/graphql';
+import { useRouter } from 'next/router';
 
 const query = gql`
   query getLocation {
@@ -53,14 +54,17 @@ type Props = {
   cta: Cta.Props;
 };
 
-const locations = ({ meta, locations, cta }: Props) => {
+const Locations = ({ meta, locations, cta }: Props) => {
+  const router = useRouter();
+  const query = router.query.name;
+
   return (
     <>
       <GenericPageMeta.default {...meta} />
       <Section hasHero>
         <LocationsWrapper>
           {locations.map((item, i) => (
-            <LocationsCard.default key={i} {...item} />
+            <LocationsCard.default key={i} {...item} query={query} />
           ))}
         </LocationsWrapper>
       </Section>
@@ -73,7 +77,7 @@ const locations = ({ meta, locations, cta }: Props) => {
   );
 };
 
-export default locations;
+export default Locations;
 
 export const getStaticProps: GetStaticProps = async () => {
   const client = getGraphqlClient();

@@ -47,18 +47,20 @@ const Hero: NextPage<Props> = ({
           </p>
           {btnText && <Button kind="Link" slug="/about-us" text={btnText} />}
         </div>
-        <div className={styles.imgWrapper}>
-          <Image
-            className={
-              isHeroVisible ? `${styles.img} ${styles.visible}` : styles.img
-            }
-            src={image?.data?.attributes?.url ?? ''}
-            alt=""
-            width={Number(image?.data?.attributes?.width)}
-            height={Number(image?.data?.attributes?.height)}
-            priority
-          />
-        </div>
+        {image && (
+          <div className={styles.imgWrapper}>
+            <Image
+              className={
+                isHeroVisible ? `${styles.img} ${styles.visible}` : styles.img
+              }
+              src={image?.data?.attributes?.url ?? ''}
+              alt=""
+              width={Number(image?.data?.attributes?.width)}
+              height={Number(image?.data?.attributes?.height)}
+              priority
+            />
+          </div>
+        )}
       </div>
       {hasDesign && <MobileDesignPattern />}
       {hasDesign && <TabletDesignPattern />}

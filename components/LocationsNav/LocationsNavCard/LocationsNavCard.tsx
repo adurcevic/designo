@@ -30,7 +30,13 @@ const LocationsNavCard: NextPage<Props> = ({ image, title, btnText }) => {
       </div>
       <div className={styles.content}>
         <p className={styles.title}>{title}</p>
-        <Button kind="Link" slug="/locations" dark text={btnText} />
+        <Button
+          kind="Link"
+          slug={`/locations?name=${title}`}
+          as="/locations"
+          dark
+          text={btnText}
+        />
       </div>
     </div>
   );

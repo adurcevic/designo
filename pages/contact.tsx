@@ -56,7 +56,7 @@ type Props = {
   locationsNav: LocationsNavCard.Props[];
 };
 
-const contact = ({ meta, hero, locationsNav }: Props) => {
+const Contact = ({ meta, hero, locationsNav }: Props) => {
   return (
     <>
       <GenericPageMeta.default {...meta} />
@@ -77,7 +77,7 @@ const contact = ({ meta, hero, locationsNav }: Props) => {
   );
 };
 
-export default contact;
+export default Contact;
 
 export const getStaticProps: GetStaticProps = async () => {
   const client = getGraphqlClient();

@@ -38,7 +38,8 @@ type Props = {
   meta: GenericPageMeta.Props;
   privacyArticle: TextualArticle.Props;
 };
-const privacyPolicy = ({ meta, privacyArticle }: Props) => {
+
+const PrivacyPolicy = ({ meta, privacyArticle }: Props) => {
   return (
     <>
       <GenericPageMeta.default {...meta} />
@@ -49,7 +50,7 @@ const privacyPolicy = ({ meta, privacyArticle }: Props) => {
   );
 };
 
-export default privacyPolicy;
+export default PrivacyPolicy;
 
 export const getStaticProps: GetStaticProps = async () => {
   const client = getGraphqlClient();

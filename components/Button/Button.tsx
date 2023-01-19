@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import styles from './Button.module.scss';
 import Link from 'next/link';
+import { LinkProps } from 'next/link';
 
 interface CommonProps {
   text: string | JSX.Element;
@@ -14,12 +15,12 @@ interface ButtonProps extends CommonProps {
   onClick?: () => void;
 }
 
-interface LinkProps extends CommonProps {
+interface LinkRequiredProps extends Omit<LinkProps, 'href'>, CommonProps {
   kind: 'Link';
   slug: string;
 }
 
-type Props = ButtonProps | LinkProps;
+type Props = ButtonProps | LinkRequiredProps;
 
 const Button: NextPage<Props> = (props) => {
   if (props.kind === 'Button') {
@@ -38,9 +39,9 @@ const Button: NextPage<Props> = (props) => {
   }
 
   if (props.kind === 'Link') {
-    const { text, dark, slug } = props;
+    const { text, dark, slug, as } = props;
     return (
-      <Link className={dark ? styles.btnDark : styles.btn} href={slug}>
+      <Link className={dark ? styles.btnDark : styles.btn} as={as} href={slug}>
         {text}
       </Link>
     );
