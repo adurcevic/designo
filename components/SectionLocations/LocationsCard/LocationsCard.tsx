@@ -17,12 +17,15 @@ const LocationsCard: NextPage<Props> = ({
   lat,
   lng,
 }) => {
-  const Map = dynamic(() => import('../Map/Map'), { ssr: false });
+  const Map = dynamic(() => import('../Map/Map'), {
+    ssr: false,
+    loading: () => <div>Loading...</div>,
+  });
   const position = { lat, lng };
 
   return (
     <div className={styles.card}>
-      <Map {...position} />
+      {Map ? <Map {...position} /> : 'loading...'}
       <div className={styles.content}>
         <div className={styles.contentInner}>
           <h1 className={styles.title}>{country}</h1>
