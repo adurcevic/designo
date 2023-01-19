@@ -4,14 +4,11 @@ import { useRef } from 'react';
 import useIntersection from '../../hooks/useIntersection';
 import styles from './FeatureCard.module.scss';
 import SingleCircle from '../BgPatterns/SingleCircle';
+import { ComponentPageFeatureCard } from '../../generated/graphql';
 
-export type Props = {
-  imgSrc: string;
-  title: string;
-  text: string;
-};
+export type Props = ComponentPageFeatureCard;
 
-const FeatureCard: NextPage<Props> = ({ imgSrc, title, text }) => {
+const FeatureCard: NextPage<Props> = ({ title, text, image }) => {
   const ref = useRef<HTMLDivElement>(null);
   const isVisible = useIntersection(ref);
 
@@ -23,10 +20,10 @@ const FeatureCard: NextPage<Props> = ({ imgSrc, title, text }) => {
       <div className={styles.imgWrapper}>
         <Image
           className={styles.img}
-          src={imgSrc}
+          src={image?.data?.attributes?.url ?? ''}
           alt=""
-          width={202}
-          height={202}
+          width={Number(image?.data?.attributes?.width)}
+          height={Number(image?.data?.attributes?.height)}
         />
         <SingleCircle />
       </div>

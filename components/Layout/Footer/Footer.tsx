@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import styles from './Footer.module.scss';
 import Logo from '../../Logo/Logo';
-import LogoLight from '../../../public/logo-light.png';
+import LogoLight from '../../../public/assets/logo-light.png';
 import SocialLinks from '../../SocialLinks/SocialLinks';
 
 type Props = {

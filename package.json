@@ -1,8 +1,9 @@
 {
-  "name": "frontend",
+  "name": "designo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "codegen:generate": "graphql-codegen --watch",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -18,9 +19,13 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-leaflet": "^4.2.0",
+    "react-spinners": "^0.13.7",
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.16.4",
+    "@graphql-codegen/typescript": "^2.8.7",
+    "@graphql-codegen/typescript-operations": "^2.5.12",
     "@types/leaflet": "^1.9.0",
     "@types/node": "^18.11.11",
     "@types/react": "^18.0.26",
@@ -38,6 +43,7 @@
     "postcss-preset-env": "^7.8.3",
     "prettier": "^2.8.0",
     "sass": "^1.56.1",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.3"
   },
   "lint-staged": {

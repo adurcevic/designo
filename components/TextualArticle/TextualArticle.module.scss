@@ -1,0 +1,77 @@
+@use 'fonts';
+
+.header {
+  margin-bottom: 48px;
+  & h1 {
+    @include fonts.small-heading-1;
+    color: var(--color-dark-grey);
+    text-transform: capitalize;
+    margin-bottom: 16px;
+
+    @media (--medium) {
+      @include fonts.medium-heading-1;
+      margin-bottom: 24px;
+    }
+  }
+
+  & p {
+    @include fonts.small-body;
+    color: rgba(var(--color-grey), 0.5);
+
+    @media (--medium) {
+      @include fonts.medium-body;
+    }
+  }
+}
+
+.article {
+  max-width: 850px;
+  margin: 0 auto;
+
+  & h2 {
+    @include fonts.small-heading-2;
+    letter-spacing: 0;
+    margin: 24px 0;
+    color: var(--color-dark-grey);
+
+    @media (--medium) {
+      @include fonts.small-heading-1;
+      margin: 32px 0;
+    }
+  }
+
+  & a {
+    color: var(--color-peach);
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  & p {
+    @include fonts.small-body;
+    color: var(--color-dark-grey);
+    margin-bottom: 8px;
+
+    @media (--medium) {
+      @include fonts.medium-body;
+      margin-bottom: 12px;
+    }
+  }
+
+  & p:last-child {
+    margin-bottom: 0;
+  }
+
+  & ul {
+    list-style-type: none;
+    color: var(--color-dark-grey);
+    @include fonts.small-body;
+    margin-bottom: 8px;
+
+    @media (--medium) {
+      @include fonts.medium-body;
+      margin-bottom: 12px;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import styles from './Hero.module.scss';
 import WebPattern from './HeroDesignPatterns/WebPattern/WebPattern';
@@ -7,41 +7,30 @@ import AppPattern from './HeroDesignPatterns/AppPattern/AppPattern';
 import GraphicPattern from './HeroDesignPatterns/GraphicPattern/GraphicPattern';
 import MobileDesignPattern from './HeroDesignPatterns/MobilePattern/MobileDesignPattern';
 import TabletDesignPattern from './HeroDesignPatterns/TabletPattern/TabletDesignPattern';
+import Button from '../Button/Button';
+import { ComponentPageHero } from '../../generated/graphql';
+import useIntersection from '../../hooks/useIntersection';
 
-export type Props = {
-  button?: JSX.Element;
-  children?: JSX.Element | JSX.Element[];
-  title: string;
-  subtitle: string;
-  imgSrc?: string;
-  hasDesign?: boolean;
-  pattern?: 'web' | 'app' | 'graphic';
-};
+export type Props = ComponentPageHero & { hasDesign?: boolean };
 
 const Hero: NextPage<Props> = ({
-  button,
+  btnText,
   title,
-  subtitle,
-  imgSrc,
+  text,
+  image,
   hasDesign,
   pattern,
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-
-    return () => {
-      setIsLoaded(false);
-    };
-  }, []);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const isHeroVisible = useIntersection(heroRef);
 
   return (
     <div className={hasDesign ? styles.heroDesign : styles.hero}>
       <div className={hasDesign ? styles.heroInnerDesign : styles.heroInner}>
         <div
+          ref={heroRef}
           className={
-            isLoaded
+            isHeroVisible
               ? `${styles.content} ${styles.visible} ${
                   hasDesign && styles.contentDesign
                 }`
@@ -54,20 +43,20 @@ const Hero: NextPage<Props> = ({
               hasDesign ? `${styles.text} ${styles.textDesign}` : styles.text
             }
           >
-            {subtitle}
+            {text}
           </p>
-          {button}
+          {btnText && <Button kind="Link" slug="/about-us" text={btnText} />}
         </div>
-        {imgSrc && (
+        {image && (
           <div className={styles.imgWrapper}>
             <Image
               className={
-                isLoaded ? `${styles.img} ${styles.visible}` : styles.img
+                isHeroVisible ? `${styles.img} ${styles.visible}` : styles.img
               }
-              src={imgSrc}
+              src={image?.data?.attributes?.url ?? ''}
               alt=""
-              width={624}
-              height={913}
+              width={Number(image?.data?.attributes?.width)}
+              height={Number(image?.data?.attributes?.height)}
               priority
             />
           </div>

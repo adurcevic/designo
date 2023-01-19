@@ -7,16 +7,82 @@ import * as Cta from '../components/Cta/Cta';
 import * as ProjectCard from '../components/SectionProject/ProjectCard/ProjectCard';
 import ProjectGrid from '../components/SectionProject/ProjectGrid/ProjectGrid';
 import DesignSection from '../components/SectionDesign/DesignSection';
-import Button from '../components/Button/Button';
-import { webMeta, webHero, webProjects, webDesign } from '../mock/WebDesign';
-import { appMeta, appHero, appProjects, appDesign } from '../mock/AppDesign';
-import {
-  graphicMeta,
-  graphicHero,
-  graphicProjects,
-  graphicDesign,
-} from '../mock/GraphicDesign';
 import LeafPattern from '../components/BgPatterns/LeafPattern/LeafPattern';
+import { getGraphqlClient } from '../lib/graphql';
+import { gql } from 'graphql-request';
+import { GetDesignQuery } from '../generated/graphql';
+
+const query = gql`
+  query getDesign($id: ID) {
+    projectPage(id: $id) {
+      data {
+        attributes {
+          Meta {
+            title
+            description
+            url
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+          Hero {
+            title
+            text
+            pattern
+          }
+          Projects {
+            image {
+              data {
+                attributes {
+                  url
+                  height
+                  width
+                }
+              }
+            }
+            title
+            text
+          }
+          DesignsNav {
+            title
+            text
+            slug
+            imgMobile {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            imgTablet {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            imgDesktop {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+          Cta {
+            title
+            text
+            btnText
+          }
+        }
+      }
+    }
+  }
+`;
 
 type Props = {
   meta: GenericPageMeta.Props;
@@ -26,13 +92,7 @@ type Props = {
   cta: Cta.Props;
 };
 
-export default function WebDesign({
-  meta,
-  hero,
-  projects,
-  design,
-  cta,
-}: Props) {
+const Design = ({ meta, hero, projects, design, cta }: Props) => {
   return (
     <>
       <GenericPageMeta.default {...meta} />
@@ -55,45 +115,39 @@ export default function WebDesign({
         </DesignSection>
       </Section>
       <Section hasCta>
-        <Cta.default {...cta}>
-          <Button kind="Link" slug="/contact" text={'Get in touch'} />
-        </Cta.default>
+        <Cta.default {...cta} />
       </Section>
     </>
   );
-}
+};
+
+export default Design;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
+  const client = getGraphqlClient();
+  let data: GetDesignQuery | undefined;
 
-  let meta = webMeta;
-  let hero = webHero;
-  let projects = webProjects;
-  let design = webDesign;
+  if (params && params.designid === 'web-design') {
+    data = await client.request(query, { id: '1' });
+  }
 
   if (params && params.designid === 'app-design') {
-    meta = appMeta;
-    hero = appHero;
-    projects = appProjects;
-    design = appDesign;
+    data = await client.request(query, { id: '2' });
   }
 
   if (params && params.designid === 'graphic-design') {
-    meta = graphicMeta;
-    hero = graphicHero;
-    projects = graphicProjects;
-    design = graphicDesign;
+    data = await client.request(query, { id: '3' });
   }
 
+  const page = data?.projectPage?.data?.attributes;
+
   const props = {
-    meta,
-    hero,
-    projects,
-    design,
-    cta: {
-      title: 'Let`s talk about your project',
-      text: 'Ready to take it to the next level? Contact us today and find out how our expertiese can help your business grow.',
-    },
+    meta: page?.Meta,
+    hero: page?.Hero,
+    projects: page?.Projects,
+    design: page?.DesignsNav,
+    cta: page?.Cta,
   };
   return {
     props,

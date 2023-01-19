@@ -1,22 +1,19 @@
 import Image from 'next/image';
 import styles from './ProjectCard.module.scss';
 import { NextPage } from 'next';
+import { ComponentPageProjectCard } from '../../../generated/graphql';
 
-export type Props = {
-  imgSrc: string;
-  title: string;
-  text: string;
-};
+export type Props = ComponentPageProjectCard;
 
-const ProjectCard: NextPage<Props> = ({ imgSrc, title, text }) => {
+const ProjectCard: NextPage<Props> = ({ image, title, text }) => {
   return (
     <div className={styles.card}>
       <Image
         className={styles.img}
-        src={imgSrc}
+        src={image?.data?.attributes?.url ?? ''}
         alt=""
-        height={700}
-        width={640}
+        height={Number(image?.data?.attributes?.height)}
+        width={Number(image?.data?.attributes?.width)}
       />
       <div className={styles.content}>
         <div className={styles.contentInner}>

@@ -3,18 +3,12 @@ import dynamic from 'next/dynamic';
 import { NextPage } from 'next';
 import ThreeCircles from '../../BgPatterns/ThreeCircles/ThreeCircles';
 import TwoCircles from '../../BgPatterns/TwoCircles/TwoCircles';
+import { ComponentPageLocationCard } from '../../../generated/graphql';
+import { DotLoader } from 'react-spinners';
+import { useEffect, useRef } from 'react';
 
-export type Props = {
-  country: string;
-  office: string;
-  street: string;
-  city: string;
-  phone: string;
-  email: string;
-  position: {
-    lat: number;
-    lng: number;
-  };
+export type Props = ComponentPageLocationCard & {
+  query: string | string[] | undefined;
 };
 
 const LocationsCard: NextPage<Props> = ({
@@ -24,12 +18,28 @@ const LocationsCard: NextPage<Props> = ({
   city,
   phone,
   email,
-  position,
+  lat,
+  lng,
+  query,
 }) => {
-  const Map = dynamic(() => import('../Map/Map'), { ssr: false });
+  const Map = dynamic(() => import('../Map/Map'), {
+    ssr: false,
+    loading: () => (
+      <div className={styles.spinnerWrapper}>
+        <DotLoader aria-hidden="true" color="#e7816b" />
+      </div>
+    ),
+  });
+  const position = { lat, lng };
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (query === country && ref)
+      ref.current?.scrollIntoView({ block: 'center' });
+  }, [query, country]);
 
   return (
-    <div className={styles.card}>
+    <div ref={query === country ? ref : null} className={styles.card}>
       <Map {...position} />
       <div className={styles.content}>
         <div className={styles.contentInner}>

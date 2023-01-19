@@ -1,7 +1,16 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/dgofh9c7t/**',
+      },
+    ],
+  },
   reactStrictMode: true,
   swcMinify: true,
   sassOptions: {
@@ -9,4 +18,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+// module.exports = nextConfig;

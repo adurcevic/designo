@@ -1,33 +1,35 @@
 import { NextPage } from 'next';
 import styles from './Button.module.scss';
+import Link from 'next/link';
+import { LinkProps } from 'next/link';
 
 interface CommonProps {
-  text: string;
+  text: string | JSX.Element;
   dark?: boolean;
 }
 
 interface ButtonProps extends CommonProps {
   kind: 'Button';
-  type?: string;
+  type?: 'button' | 'submit';
   disabled?: boolean;
   onClick?: () => void;
 }
 
-interface LinkProps extends CommonProps {
+interface LinkRequiredProps extends Omit<LinkProps, 'href'>, CommonProps {
   kind: 'Link';
   slug: string;
 }
 
-type Props = ButtonProps | LinkProps;
+type Props = ButtonProps | LinkRequiredProps;
 
 const Button: NextPage<Props> = (props) => {
   if (props.kind === 'Button') {
     const { text, dark, type, onClick } = props;
     return (
       <button
-        type={type ? 'submit' : 'button'}
+        type={type ?? 'button'}
         className={`${dark ? styles.btnDark : styles.btn} ${
-          type ? styles.submit : ''
+          type === 'submit' ? styles.submit : ''
         }`}
         onClick={onClick}
       >
@@ -37,11 +39,11 @@ const Button: NextPage<Props> = (props) => {
   }
 
   if (props.kind === 'Link') {
-    const { text, dark, slug } = props;
+    const { text, dark, slug, as } = props;
     return (
-      <a className={dark ? styles.btnDark : styles.btn} href={slug}>
+      <Link className={dark ? styles.btnDark : styles.btn} as={as} href={slug}>
         {text}
-      </a>
+      </Link>
     );
   }
 

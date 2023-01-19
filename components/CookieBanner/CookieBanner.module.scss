@@ -1,0 +1,50 @@
+@use 'layout';
+@use 'fonts';
+
+.cookieWrapper {
+  position: fixed;
+  bottom: 6px;
+  z-index: 7;
+  width: 100%;
+}
+
+.cookie {
+  background-color: var(--color-white);
+  border-radius: 15px;
+  box-shadow: 1px 2px 7px var(--color-dark-grey);
+  margin: 0 var(--page-padding-x);
+  width: calc(100% - var(--page-padding-x) - var(--page-padding-x));
+
+  @media (--xlarge) {
+    margin: 0 auto;
+    width: var(--page-section-width);
+  }
+}
+
+.cookieInner {
+  padding: 12px;
+  @include layout.flex(flex-start, center, column);
+  gap: 16px;
+
+  @media (--medium) {
+    @include layout.flex(center, space-between, row);
+  }
+}
+
+.title {
+  @include fonts.small-heading-3;
+  letter-spacing: 0;
+  color: var(--color-peach);
+  padding-left: 17px;
+}
+
+.btnWrapper {
+  width: 100%;
+  @include layout.flex(center, space-between);
+  flex-wrap: wrap;
+
+  @media (--medium) {
+    width: auto;
+    justify-content: flex-end;
+  }
+}

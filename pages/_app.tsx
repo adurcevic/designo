@@ -6,10 +6,12 @@ import Main from '../components/Layout/Main/Main';
 import Navbar from '../components/Navbar/Navbar';
 import HamburgerBtn from '../components/Layout/Header/HamburgerBtn';
 import Logo from '../components/Logo/Logo';
-import LogoImg from '../public/logo-dark.png';
+import LogoImg from '../public/assets/logo-dark.png';
 import Overlay from '../components/Overlay/Overlay';
 import Footer from '../components/Layout/Footer/Footer';
 import useWindowSize from '../hooks/useWindowSize';
+import CookieBanner from '../components/CookieBanner/CookieBanner';
+import { CookieProvider } from '../context/CookiesContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -39,8 +41,16 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Overlay isVisible={isNavOpen} />
+      <CookieProvider>
+        <CookieBanner />
+      </CookieProvider>
       <Header>
-        <Logo isOpen={isNavOpen} setIsNavOpen={setIsNavOpen} logo={LogoImg} />
+        <Logo
+          isOpen={isNavOpen}
+          setIsNavOpen={setIsNavOpen}
+          logo={LogoImg}
+          priority={true}
+        />
         <Navbar isOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
         <HamburgerBtn toggleNav={toggleNav} isOpen={isNavOpen} />
       </Header>

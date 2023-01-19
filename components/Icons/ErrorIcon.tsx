@@ -1,6 +1,11 @@
 import React from 'react';
 
-const ErrorIcon = () => {
+type Props = {
+  bgColor?: string;
+  color?: string;
+};
+
+const ErrorIcon = ({ bgColor, color }: Props) => {
   return (
     <svg
       aria-hidden="true"
@@ -10,8 +15,11 @@ const ErrorIcon = () => {
       height="20"
     >
       <g fill="none" fillRule="evenodd">
-        <circle cx="10" cy="10" r="10" fill="#FFF" />
-        <path fill="#E7816B" d="M11 14v2H9v-2h2zm0-9v7H9V5h2z" />
+        <circle cx="10" cy="10" r="10" fill={bgColor ? bgColor : '#FFF'} />
+        <path
+          fill={color ? color : '#E7816b'}
+          d="M11 14v2H9v-2h2zm0-9v7H9V5h2z"
+        />
       </g>
     </svg>
   );
