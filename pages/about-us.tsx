@@ -23,6 +23,7 @@ const query = gql`
           Meta {
             title
             description
+            url
             image {
               data {
                 attributes {
