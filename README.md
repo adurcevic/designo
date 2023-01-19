@@ -9,11 +9,10 @@ This is a solution to the [Designo agency website challenge on Frontend Mentor](
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
-  - [Built with](#built-with)
+  - [Frontend Built with](#frontend-built-with)
+  - [Backend](#backend)
   - [What I learned](#what-i-learned)
 - [Author](#author)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
