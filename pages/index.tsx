@@ -20,6 +20,13 @@ const query = gql`
           Meta {
             title
             description
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
           }
           Hero {
             title

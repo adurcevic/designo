@@ -1,13 +1,15 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import styles from './ContactForm.module.scss';
 import Button from '../../Button/Button';
 import ErrorIcon from '../../Icons/ErrorIcon';
 import { data } from './FormData';
-import Modal from '../../Modal/Modal';
 import { BeatLoader } from 'react-spinners';
 import { apiBaseUrl } from '../../../config/public';
+
+const Modal = dynamic(() => import('../../Modal/Modal'), { ssr: false });
 
 const ContactForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

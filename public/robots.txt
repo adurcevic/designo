@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /*
+
+Sitemap: https://designo-chi.vercel.app/sitemap.xml

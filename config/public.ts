@@ -10,7 +10,7 @@ const parseRuntimeEnv = (value: string) => {
   }
 };
 
-const runtimeEnv = parseRuntimeEnv(
+export const runtimeEnv = parseRuntimeEnv(
   readPublicEnv(process.env.NEXT_PUBLIC_RUNTIME_ENV, {
     name: 'NEXT_PUBLIC_RUNTIME_ENV',
   })

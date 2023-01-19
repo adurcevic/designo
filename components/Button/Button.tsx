@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import styles from './Button.module.scss';
+import Link from 'next/link';
 
 interface CommonProps {
   text: string | JSX.Element;
@@ -39,9 +40,9 @@ const Button: NextPage<Props> = (props) => {
   if (props.kind === 'Link') {
     const { text, dark, slug } = props;
     return (
-      <a className={dark ? styles.btnDark : styles.btn} href={slug}>
+      <Link className={dark ? styles.btnDark : styles.btn} href={slug}>
         {text}
-      </a>
+      </Link>
     );
   }
 

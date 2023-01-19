@@ -6,7 +6,7 @@ import Main from '../components/Layout/Main/Main';
 import Navbar from '../components/Navbar/Navbar';
 import HamburgerBtn from '../components/Layout/Header/HamburgerBtn';
 import Logo from '../components/Logo/Logo';
-import LogoImg from '../public/logo-dark.png';
+import LogoImg from '../public/assets/logo-dark.png';
 import Overlay from '../components/Overlay/Overlay';
 import Footer from '../components/Layout/Footer/Footer';
 import useWindowSize from '../hooks/useWindowSize';
