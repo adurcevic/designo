@@ -12,6 +12,8 @@ import Footer from '../components/Layout/Footer/Footer';
 import useWindowSize from '../hooks/useWindowSize';
 import CookieBanner from '../components/CookieBanner/CookieBanner';
 import { CookieProvider } from '../context/CookiesContext';
+import { GoogleAnalytics } from '../components/GoogleAnalytics';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -43,6 +45,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Overlay isVisible={isNavOpen} />
       <CookieProvider>
         <CookieBanner />
+        <GoogleAnalytics />
       </CookieProvider>
       <Header>
         <Logo
@@ -60,6 +63,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Footer>
         <Navbar hasFooter />
       </Footer>
+      <Analytics />
     </>
   );
 }

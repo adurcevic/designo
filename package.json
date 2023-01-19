@@ -11,6 +11,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@vercel/analytics": "^0.1.8",
     "formik": "^2.2.9",
     "graphql": "^16.6.0",
     "graphql-request": "^5.1.0",
